@@ -104,3 +104,150 @@
   width: 30px;
   height: 30px;
 }
+
+
+/* 新規登録ページのスタイル */
+.new_user {
+  text-align: center;
+  margin: 20px auto;
+  max-width: 400px;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.new_user h2 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.new_user .field {
+  margin: 10px 0;
+}
+
+.new_user .field label {
+  font-weight: bold;
+}
+
+.new_user .field input[type="text"],
+.new_user .field input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.new_user .actions {
+  margin-top: 20px;
+}
+
+.new_user .actions input[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.new_user .actions input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* 共通スタイル */
+.field {
+  text-align: left;
+}
+
+/* フッタースタイル */
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #333;
+  display: flex;
+  justify-content: space-around;
+  padding: 5px 0;
+}
+
+.footer img {
+  width: 30px;
+  height: 30px;
+}
+
+/* ログインページのスタイル */
+.new_session {
+  text-align: center;
+  margin: 20px auto;
+  max-width: 400px;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.new_session h2 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.new_session .field {
+  margin: 10px 0;
+}
+
+.new_session .field label {
+  font-weight: bold;
+}
+
+.new_session .field input[type="text"],
+.new_session .field input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.new_session .actions {
+  margin-top: 20px;
+}
+
+.new_session .actions input[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.new_session .actions input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* 共通スタイル */
+.field {
+  text-align: left;
+}
+
+/* フッタースタイル */
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #333;
+  display: flex;
+  justify-content: space-around;
+  padding: 5px 0;
+}
+
+.footer img {
+  width: 30px;
+  height: 30px;
+}
