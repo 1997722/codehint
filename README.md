@@ -1,24 +1,54 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users
+| Column             | Type       | Options                        |
+| ------------------ | ------     | -----------                    |
+| email              | string     | null:false, unique:true        |
+| encrypted_password | string     | null:false                     |
+| nickname           | string     | null:false                     |
 
-Things you may want to cover:
+### Association
+- has_many :posts
+- has_many :comments
 
-* Ruby version
+## comments
+| Column             | Type       | Options                       |
+| ------------------ | ------     | -----------                   |
+| content            | text       | null:false                    |
+| user               | references | null:false, foreign_key: true |              
+| post               | references | null:false, foreign_key: true |
 
-* System dependencies
+### Association
+- belongs_to :post
+- belongs_to :user
 
-* Configuration
+## posts
+| Column             | Type       | Options                       |
+| ------------------ | ------     | -----------                   |
+| content            | text       | null:false                    |
+| user               | references | null:false, foreign_key: true |   
 
-* Database creation
+### Association
+- has_many :post_tags
+- has_many :tags, through: :post_tags
+- belongs_to :user
+- has_many :comments
 
-* Database initialization
+## post_tags
+| Column             | Type       | Options                       |
+| ------------------ | ------     | -----------                   |
+| post               | references | null:false, foreign_key: true |
+| tag                | references | null:false, foreign_key: true |
 
-* How to run the test suite
+### Association
+- belongs_to :post
+- belongs_to :tag
 
-* Services (job queues, cache servers, search engines, etc.)
+## tags
+| Column             | Type       | Options                       |
+| ------------------ | ------     | -----------                   |
+| content            | text       | null:false                    |
 
-* Deployment instructions
-
-* ...
+### Association
+- has_many :post_tags
+- has_many :posts, through: :post_tags
