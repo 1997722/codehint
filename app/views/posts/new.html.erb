@@ -1,0 +1,36 @@
+<div class="container">
+  <h3>Tag List</h3>
+  <% if @tag_list.present? %>
+    <ul class="list-group">
+      <% @tag_list.each do |tag| %>
+        <li class="list-group-item">
+          <%= link_to tag.tag_name, tag_posts_path(tag_id: tag.id) %> (<%= tag.posts.count %>)
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>タグはまだありません。</p>
+  <% end %>
+
+  <hr>
+
+  <h3>新規投稿</h3>
+  <%= form_with(model: @post, url: posts_path, local: true) do |f| %>
+    <div class="form-group">
+      <%= f.text_area :content, class: "form-control posts-text", id: "post-info", placeholder: "コーディネートの説明（必須 1,000文字まで）", rows: "7", maxlength: "1000" %>
+    </div>
+    <div class="form-group">
+      <%= f.text_field :tag_name, class: "form-control", placeholder: "タグ" %>
+      <p>スペースを入力することで複数のタグを付けることができます。 例: 雨の日 30代 </p>
+    </div>
+    <div class="form-group">
+      <%= f.file_field :image, id: "post-image", class: "form-control" %>
+      <%= image_tag @post.image, class: 'post-image' if @post.image.attached? %>
+    </div>
+    <br>
+    <div class="text-center">
+      <%= f.submit "投稿する", class: "btn btn-primary post-btn" %>
+      <%= link_to 'もどる', root_path, class: "btn btn-secondary back-btn" %>
+    </div>
+  <% end %>
+</div>

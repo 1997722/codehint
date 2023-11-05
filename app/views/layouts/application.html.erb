@@ -1,28 +1,62 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="ja" data-bs-theme="auto">
   <head>
-    <title>Codehint</title>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <title>Codehint</title>
+    <%= stylesheet_link_tag 'application', media: 'all', "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
+  <body style="padding-top:5rem;">
+  <div class="container">   
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="<%= root_path %>">Share</a>
+        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#main_nav" data-turbo-method="false">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="main_nav">
+          <ul class="navbar-nav">
+            <form class="d-flex ms-auto my-2 my-md-0">
+              <input type="search" class="form-control form-control-sm me-2" placeholder="キーワード">
+              <button type="submit" class="btn btn-warning btn-sm text-nowrap">検索</button>
+            </form>
+          </ul>
+          <ul class="navbar-nav ms-auto">
+            <% if current_user && !(controller_name == "posts" && action_name == "new") %>
+              <li class="nav-item"><%= link_to "投稿する", new_post_path, class: "nav-link" %></li>
+            <% end %>
+            <% if current_user %>
+              <li class="nav-item"><a href="#" class="nav-link">いいね</a></li>
+              <li class="nav-item dropdown" data-turbo-method="false">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><%= current_user.nickname %></a>
+                <ul class="dropdown-menu">
+                  <li><%= link_to 'マイページ', "/users/#{current_user.id}", class: "dropdown-item", data: { turbo_method: :delete } %></li>
+                  <li><%= link_to 'ログアウト', destroy_user_session_path, class: 'dropdown-item', data: { turbo_method: :delete } %></li>
+                </ul>
+              </li>
+            <% else %>
+              <% if controller_name == "sessions" %>
+                <li class="nav-item"><%= link_to "新規登録", new_user_registration_path, class: "nav-link" %></li>
+              <% elsif controller_name == "registrations" %>
+                <li class="nav-item"><%= link_to "ログイン", new_user_session_path, class: "nav-link" %></li>
+              <% else %>
+                <li class="nav-item"><%= link_to "ログイン", new_user_session_path, class: "nav-link" %></li>
+                <li class="nav-item"><%= link_to "新規登録", new_user_registration_path, class: "nav-link" %></li>
+              <% end %>            
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-  <body>  
-        <% if user_signed_in? %>
-          <div class="user_nav grid-6">
-            <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete } %>
-            <%= link_to "投稿する", new_tweet_path, class: "post" %>
-          </div>
-        <% else %>
-          <div class="grid-6">
-            <%= link_to "ログイン", new_user_session_path, class: "post" %>
-            <%= link_to "新規登録", new_user_registration_path, class: "post" %>
-          </div>
-        <% end %>
+    
+    
 
-    <%= yield %>
+      
+      <%= yield %>
+  </div>
   </body>
 </html>

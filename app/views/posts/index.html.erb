@@ -1,67 +1,28 @@
-<%# ヘッダー部分 %>
-<header class="header">
-  <div class="site-name">サイト名</div>
-  <% if user_signed_in? %>
-    <div class="user-info">
-      <span class="user-nickname"><%= current_user.nickname %></span>
-      <div class="user-dropdown">
-        <img src="assets/images/arrow_top.png" alt="プルダウンアイコン">
-        <ul class="dropdown-list">
-          <li><%= link_to 'マイページ', mypage_path %></li>
-          <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
-        </ul>
-      </div>
+<div class="container">
+  <div class="card mb-4">
+    <img src="<%= asset_path("hero.jpg") %>" class="card-img">
+    <div class="card-img-overlay text-white d-flex flex-column justify-content-center ps-4">
+      <div class="h1 mb-1">Share</div>
+      <p class="mb-0 text-white-50">Happy people make happy fashion.</p>
     </div>
-  <% else %>
-    <div class="user-actions">
-      <%= link_to 'ログイン', new_user_session_path %>
-      <%= link_to '新規登録', new_user_registration_path %>
-    </div>
-  <% end %>
-</header>
-
-<%# ボディ部分 %>
-<div class="body">
-  <div class="search-form">
-    <%= form_with(url: search_posts_path, local: true, method: :get, class: "search-form") do |form| %>
-      <%= form.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
-      <%= form.submit "検索", class: "search-button" %>
-    <% end %>
   </div>
-
-  <div class="photo-grid">
+  <div class="row">
     <% @posts.each do |post| %>
-      <div class="photo">
-        <%= image_tag post.image.url %>
-        <% if user_signed_in? && current_user.id == post.user_id %>
-          <div class="photo-dropdown">
-            <img src="assets/images/arrow_top.png" alt="プルダウンアイコン">
-            <ul class="dropdown-list">
-              <li><%= link_to '詳細', post_path(post) %></li>
-              <li><%= link_to '編集', edit_post_path(post) %></li>
-              <li><%= link_to '削除', post_path(post), method: :delete, data: { confirm: '本当に削除しますか?' } %></li>
-            </ul>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <% if post.image.attached? %>
+            <%= image_tag post.image, class: 'card-img-top' %>
+          <% end %>
+          <div class="card-body">
+            <p class="card-text" ><%= post.content %></p>
+            <p class="card-text">
+              <% post.tags.each do |tag| %>
+                <span class="badge bg-primary"><%= tag.tag_name %></span>
+              <% end %>
+            </p>
           </div>
-        <% else %>
-          <div class="photo-dropdown">
-            <img src="assets/images/arrow_top.png" alt="プルダウンアイコン">
-            <ul class="dropdown-list">
-              <li><%= link_to '詳細', post_path(post) %></li>
-            </ul>
-          </div>
-        <% end %>
+        </div>
       </div>
     <% end %>
   </div>
 </div>
-
-<%# フッター部分 %>
-<footer class="footer">
-  <div class="footer-icons">
-    <img src="assets/images/home.png" alt="ホームアイコン">
-    <img src="assets/images/search.png" alt="検索アイコン">
-    <img src="assets/images/newpost.png" alt="新規投稿アイコン">
-    <img src="assets/images/nice.png" alt="お気に入りアイコン">
-    <img src="assets/images/mypage.png" alt="マイページアイコン">
-  </div>
-</footer>
