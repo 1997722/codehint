@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <div class="card mb-4">
+      <div class="text-center">
+        <!-- 投稿画像 -->
+        <div class="post-image-container position-relative">
+          <%= image_tag @post.image, class: 'card-img-top post-image' %>
+          <div class="overlay text-center">
+            <span class="text"></span>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="text-start"> <!-- 左上に@post.content配置 -->
+            <h2 class="card-title"style="font-family: 'Your-Font-Name', sans-serif; font-size: 24px; font-weight: 600; color: #333;"><%= @post.content %></h2>
+        </div>
+        <div class="text-end"> <!-- 右上にtag.tag_name配置 -->
+          <% @post.tags.each do |tag| %>
+            <span class="badge bg-primary"><%= tag.tag_name %></span>
+          <% end %>
+        </div>
+        <div class="text-center">
+          <!-- 編集、削除ボタン (ログイン中の投稿者のみ表示) -->
+          <% if user_signed_in? && current_user == @post.user %>
+            <div class="btn-group">
+              <%= link_to '編集', edit_post_path(@post), class: 'btn btn-outline-secondary' %>
+              <%= link_to '削除', @post, method: :delete, data: { confirm: '本当に削除しますか?' }, class: 'btn btn-outline-secondary' %>
+            </div>
+          <% end %>
+        </div>
+        <div class="text-end"> <!-- 右下に@post.user.nickname配置 -->
+          <small class="text-muted">
+            投稿者: <%= link_to @post.user.nickname, user_path(@post.user), style: 'color: gray;' %>
+          </small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
