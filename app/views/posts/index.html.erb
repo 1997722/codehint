@@ -1,9 +1,28 @@
-<div class="container">        <!-- 全体を囲むコンテナ -->
-
+<div class="container">
   <div class="card mb-4">
-    <img src="<%=asset_path("hero.jpg")%>" class="card-img">
+    <img src="<%= asset_path("hero.jpg") %>" class="card-img">
     <div class="card-img-overlay text-white d-flex flex-column justify-content-center ps-4">
       <div class="h1 mb-1">Share</div>
       <p class="mb-0 text-white-50">Happy people make happy fashion.</p>
     </div>
   </div>
+  <div class="row">
+    <% @posts.each do |post| %>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <% if post.image.attached? %>
+            <%= image_tag post.image, class: 'card-img-top' %>
+          <% end %>
+          <div class="card-body">
+            <p class="card-text" ><%= post.content %></p>
+            <p class="card-text">
+              <% post.tags.each do |tag| %>
+                <span class="badge bg-primary"><%= tag.tag_name %></span>
+              <% end %>
+            </p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
