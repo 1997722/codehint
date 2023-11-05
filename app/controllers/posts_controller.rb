@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:edit, :show, :update]
+  before_action :set_post, only: [:edit, :show, :update, :destroy]
 
   def index
     @tag_list = Tag.all     
@@ -32,6 +32,11 @@ class PostsController < ApplicationController
 
   def update
     @post.update(post_params)
+    redirect_to root_path
+  end
+  
+  def destroy
+    @post.destroy
     redirect_to root_path
   end
 
