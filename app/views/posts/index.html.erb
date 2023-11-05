@@ -8,8 +8,8 @@
   </div>
   <div class="row">
     <% @posts.each do |post| %>
-      <div class="col-md-4">
-        <div class="card mb-4">
+      <div class="col-md-4 mb-4">
+        <div class="card">
           <!-- 投稿画像 -->
           <div class="post-image-container position-relative">
             <% if post.image.attached? %>
@@ -37,7 +37,7 @@
                 </div>
               </div>
             <% end %>
-            <small class="text-muted" style="float: right;">
+            <small class="text-muted">
               投稿者: <%= link_to post.user.nickname, user_path(post.user), style: 'color: gray;' %>
             </small>
           </div>

@@ -1,5 +1,5 @@
 <div class="container">
-  <h3>新規投稿</h3>
+  <h3 class="text-center">新規投稿</h3>
   <%= form_with(model: @post, url: posts_path, local: true) do |f| %>
     <div class="form-group">
       <%= f.text_area :content, class: "form-control posts-text", id: "post-info", placeholder: "コーディネートの説明（必須 400文字まで）", rows: "7", maxlength: "400" %>
@@ -9,9 +9,10 @@
       <%= f.text_field :tag_name, class: "form-control", placeholder: "タグ" %>
       <p><small>※スペースを入力することで複数のタグを付けることができます。 例：雨の日 30代</small></p>
     </div>
-    <div class="form-group">
-      <%= f.file_field :image, id: "post-image", class: "form-control" %>
-      <%= image_tag @post.image, class: 'post-image' if @post.image.attached? %>
+    <div class="form-group text-center">
+      <%= f.file_field :image, id: "post-image", class: "form-control-file" %>
+      <%= image_tag @post.image, class: 'img-thumbnail mx-auto d-block' if @post.image.attached? %>
+      <small class="text-muted">画像サイズ: 400px x 400px がおすすめです。</small>
     </div>
     <br>
     <div class="text-center">
