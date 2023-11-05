@@ -47,7 +47,7 @@
 ## tags
 | Column             | Type       | Options                       |
 | ------------------ | ------     | -----------                   |
-| content            | text       | null:false                    |
+| tag_name           | string     | null:false                    |
 
 ### Association
 - has_many :post_tags

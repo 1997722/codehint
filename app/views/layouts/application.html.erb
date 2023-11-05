@@ -9,7 +9,6 @@
     <%= stylesheet_link_tag 'application', media: 'all', "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-
   <body style="padding-top:5rem;">
   <div class="container">   
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
@@ -26,9 +25,11 @@
             </form>
           </ul>
           <ul class="navbar-nav ms-auto">
+            <% if current_user && !(controller_name == "posts" && action_name == "new") %>
+              <li class="nav-item"><%= link_to "投稿する", new_post_path, class: "nav-link" %></li>
+            <% end %>
             <% if current_user %>
-              <li class="nav-item"><a href="#" class="nav-link">新規投稿</a></li>
-              <li class="nav-item"><a href="#" class="nav-link">Nice</a></li>
+              <li class="nav-item"><a href="#" class="nav-link">いいね</a></li>
               <li class="nav-item dropdown" data-turbo-method="false">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><%= current_user.nickname %></a>
                 <ul class="dropdown-menu">
