@@ -5,6 +5,7 @@ class PostsController < ApplicationController
     @tag_list = Tag.all     
     @posts = Post.all
     @post = current_user.posts.new
+    @posts = Post.includes(:user).order("created_at DESC")
   end
 
   def new

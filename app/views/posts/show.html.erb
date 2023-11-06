@@ -14,11 +14,9 @@
         <div class="text-start"> <!-- 左上に@post.content配置 -->
             <h2 class="card-title"style="font-family: 'Your-Font-Name', sans-serif; font-size: 24px; font-weight: 600; color: #333;"><%= @post.content %></h2>
         </div>
-        <div class="text-end"> <!-- 右上にtag.tag_name配置 -->
           <% @post.tags.each do |tag| %>
             <span class="badge bg-primary"><%= tag.tag_name %></span>
           <% end %>
-        </div>
         <div class="text-center">
           <!-- 編集、削除ボタン (ログイン中の投稿者のみ表示) -->
           <% if user_signed_in? && current_user == @post.user %>
