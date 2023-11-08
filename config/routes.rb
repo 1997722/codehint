@@ -6,9 +6,5 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
-
-  resources :tags do
-    get 'posts', to: 'posts#search'
-  end
   resources :users, only: [:show]
 end

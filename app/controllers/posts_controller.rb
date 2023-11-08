@@ -1,27 +1,29 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:edit, :show, :update, :destroy]
+  # before_action :move_to_index, except: [:index, :show, :search]
 
   def index
-    @tag_list = Tag.all     
+    @tag_list = Tag.all 
     @posts = Post.all
     @post = current_user.posts.new
-    @posts = Post.includes(:user).order("created_at DESC")
+    @posts = Post.includes(:user).order("created_at DESC")     
+    @tag = Tag.find(params[:tag_id]) if params[:tag_id].present?
   end
 
   def new
     @post = Post.new 
-    @posts = Post.all
   end
 
   def create
     @post = current_user.posts.new(post_params)
     tag_list = params[:post][:tag_name].split(nil)                 
     if @post.save
-      @post.save_tags(tag_list)                         
-      redirect_back(fallback_location: root_path)
-    else      
-      render :new       
+      @post.save_tags(tag_list)
+      flash[:notice] = "投稿が成功しました。"                           
+    else
+      flash[:alert] = "投稿に失敗しました。" 
     end
+    redirect_to root_path   
   end
 
   def show
@@ -41,12 +43,12 @@ class PostsController < ApplicationController
     redirect_to root_path
   end
 
-  
   def search
-    @tag_list = Tag.all  #こっちの投稿一覧表示ページでも全てのタグを表示するために、タグを全取得
-    @tag = Tag.find(params[:tag_id])  #クリックしたタグを取得
-    @posts = @tag.posts.all           #クリックしたタグに紐付けられた投稿を全て表示
+    @tag_name = params[:tag_name]
+    @tag = Tag.find_by(tag_name: @tag_name)
+    @posts = @tag.present? ? @tag.posts : []
   end
+  
 
   private
 
@@ -57,4 +59,10 @@ class PostsController < ApplicationController
   def set_post
     @post = Post.find(params[:id])  
   end
+
+  # def move_to_index
+    # unless user_signed_in?
+      # redirect_to action: :index
+    # end
+  # end
 end

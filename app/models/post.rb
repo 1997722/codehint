@@ -9,7 +9,15 @@ class Post < ApplicationRecord
     validates :content
     validates :image
   end
-
+  
+  def self.search_by_tag(tag_name)
+    if tag_name.present?
+      joins(:tags).where(tags: { tag_name: tag_name })
+    else
+      all
+    end
+  end
+  
   def save_tags(sent_tags)
     new_tags = sent_tags
     old_tags = self.tags.pluck(:tag_name) - sent_tags
