@@ -2,12 +2,24 @@
 <html lang="ja" data-bs-theme="auto">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <title>Codehint</title>
     <%= stylesheet_link_tag 'application', media: 'all', "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <style>
+      /* カスタムCSSを追加 */
+      .search-form {
+        display: flex;
+        align-items: center;
+      }
+
+      .search-form .custom-search-input {
+        flex: 3; /* 検索フォームの幅を広げます */
+        margin-right: 10px; /* ボタンとの間に隙間を作ります */
+      }
+    </style>
   </head>
   <body style="padding-top:5rem;">
   <div class="container">   
@@ -20,11 +32,17 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="main_nav">
-          <ul class="navbar-nav">
-            <form class="d-flex ms-auto my-2 my-md-0">
-              <input type="search" class="form-control form-control-sm me-2" placeholder="キーワード">
-              <button type="submit" class="btn btn-light btn-sm text-nowrap">検索</button>
-            </form>
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <%= form_with(url: search_posts_path, method: :get, class: "search-form", local: true) do |form| %>
+                  <div class="input-group">
+                    <%= form.text_field :tag_name, placeholder: "キーワード", class: "form-control custom-search-input" %>
+                    <div class="input-group-append">
+                      <%= form.submit "検索", class: "btn btn-light text-nowrap search-btn" %>
+                    </div>
+                  </div>
+                <% end %>  
+            </li>
           </ul>
           <ul class="navbar-nav ms-auto">
             <% if current_user && !(controller_name == "posts" && action_name == "new") %>
