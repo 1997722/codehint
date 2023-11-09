@@ -1,0 +1,29 @@
+/* ハートのサイズと色調整 */
+label svg {
+  width: 24px; /* ハートのサイズを変更 */
+  fill: #000; /* ハートの初期色を設定 */
+  transition: fill 0.3s; /* ハートの色の変化にトランジションを追加 */
+}
+
+/* ハートの色変更 */
+input[type="checkbox"] + label svg {
+  fill: #FAE2E2; /* 未選択時のハートの色 */
+}
+
+input[type="checkbox"]:checked + label svg {
+  fill: #FA9797; /* 選択時のハートの色 */
+  animation: like 0.8s ease-out;
+}
+
+/* ハートのアニメーション */
+@keyframes like {
+  0% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(0.5, 0.5);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
