@@ -68,6 +68,9 @@
                 </div>
               <% end %>
             </div>
+            <div id="like-btn<%= post.id %>">
+              <%= render partial: "likes/like", locals: { post: post } %>
+            </div>
             <div class="text-end">
               <small class="text-muted ">
                 投稿者: <%= link_to post.user.nickname, user_path(post.user), style: 'color: gray;' %>

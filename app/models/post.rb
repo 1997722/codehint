@@ -3,11 +3,16 @@ class Post < ApplicationRecord
   has_many :tags, through: :post_tags
   belongs_to :user
   has_many :comments
+  has_many :likes
   has_one_attached :image
 
   with_options presence: true do
     validates :content
     validates :image
+  end
+
+  def liked_by?(user)
+    likes.where(user_id: user.id).exists?
   end
   
   def self.search_by_tag(tag_name)
