@@ -5,6 +5,11 @@ Rails.application.routes.draw do
     collection do
       get 'search'
     end
+    resource :likes, only: [:create, :destroy]
   end
-  resources :users, only: [:show]
+  resources :users do
+    member do
+      get :likes
+    end
+  end
 end
