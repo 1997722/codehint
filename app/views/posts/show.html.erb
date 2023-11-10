@@ -22,7 +22,7 @@
           <% if user_signed_in? && current_user == @post.user %>
             <div class="btn-group">
               <%= link_to '編集', edit_post_path(@post), class: 'btn btn-outline-secondary' %>
-              <%= link_to '削除', @post, method: :delete, data: { confirm: '本当に削除しますか?' }, class: 'btn btn-outline-secondary' %>
+              <%= link_to '削除', post_path(@post), data: { turbo_method: :delete }, class: 'btn btn-outline-secondary' %>
             </div>
           <% end %>
         </div>
@@ -30,6 +30,23 @@
           <small class="text-muted">
             投稿者: <%= link_to @post.user.nickname, user_path(@post.user), style: 'color: gray;' %>
           </small>
+        </div>
+        <div id="comments">
+          <h4>＜コメント一覧＞</h4>
+            <% @post.comments.each do |comment| %>
+              <div class="comment">
+                <p class="user-info"><%= comment.user.nickname %>： </p>
+                <p><%= comment.content%></p>
+              </div>
+            <% end %>
+        </div>
+        <div class="comment-form">
+          <% if user_signed_in? %>
+            <%= form_with model: [@post, @comment], id: "comment-form" do |f| %>
+              <%= f.text_area :content , class: "comment-text"%>
+              <%= f.submit "コメントをする", class: "comment-submit" %>
+            <% end %>
+          <% end %>
         </div>
       </div>
     </div>
