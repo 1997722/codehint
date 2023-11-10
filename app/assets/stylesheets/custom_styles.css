@@ -7,10 +7,10 @@ label svg {
 
 /* ハートの色変更 */
 input[type="checkbox"] + label svg {
-  fill: #FAE2E2; /* 未選択時のハートの色 */
+  fill: #FAE2E2;
 }
 
-input[type="checkbox"]:checked + label svg {
+input[type="checkbox"].liked + label svg {
   fill: #FA9797; /* 選択時のハートの色 */
   animation: like 0.8s ease-out;
 }
