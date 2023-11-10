@@ -24,9 +24,9 @@
 ## comments
 | Column             | Type       | Options                       |
 | ------------------ | ------     | -----------                   |
-| content            | text       | null:false                    |
-| user               | references | null:false, foreign_key: true |              
-| post               | references | null:false, foreign_key: true |
+| content            | text       |                               |
+| user               | integer    |                               |              
+| post               | integer    |                               |
 
 ### Association
 - belongs_to :post

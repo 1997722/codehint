@@ -27,7 +27,9 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post_tags = @post.tags         
+    @post_tags = @post.tags     
+    @comments = @post.comments.includes(:user)
+    @comment = Comment.new    
   end
 
   def edit
@@ -39,6 +41,11 @@ class PostsController < ApplicationController
   end
   
   def destroy
+    # 投稿に関連する全てのいいねを削除
+    @post.likes.destroy_all
+    # 投稿に関連する全てのコメントを削除
+    @post.comments.destroy_all
+    # 投稿を削除
     @post.destroy
     redirect_to root_path
   end
