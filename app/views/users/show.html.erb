@@ -24,7 +24,9 @@
             <p class="card-text"><%= post.content %></p>
             <p class="card-text">
               <% post.tags.each do |tag| %>
-                <span class="badge bg-primary"><%= tag.tag_name %></span>
+                <span class="badge bg-secondary">
+                  <i class="fas fa-tag"></i> <%= tag.tag_name %>
+                </span>
               <% end %>
             </p>
             <!-- 編集、削除ボタン (ログイン中の投稿者のみ表示) -->
@@ -36,6 +38,10 @@
                 </div>
               </div>
             <% end %>
+            <br>
+            <div id="like-btn<%= post.id %>">
+              <%= render partial: "likes/like", locals: { post: post } %>
+            </div>
           </div>
         </div>
       </div>
