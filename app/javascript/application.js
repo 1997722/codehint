@@ -2,4 +2,3 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import "./packs/bootstrap.bundle.min.js"
-import "./packs/like_button.js"

@@ -7,6 +7,7 @@
     <%= csp_meta_tag %>
     <title>Codehint</title>
     <%= stylesheet_link_tag 'application', 'custom_styles', media: 'all', "data-turbo-track": "reload" %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <%= javascript_importmap_tags %>
     <style>
       /* カスタムCSSを追加 */
@@ -26,7 +27,7 @@
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
       <div class="container-fluid">
         <a class="navbar-brand" href="<%= root_path %>">
-          <i class="fas fa-fire"></i> Share
+          <i class="fa-solid fa-hand-holding-heart"></i> Share
         </a>
         <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#main_nav" data-turbo-method="false">
           <span class="navbar-toggler-icon"></span>
@@ -36,9 +37,9 @@
             <li class="nav-item">
                 <%= form_with(url: search_posts_path, method: :get, class: "search-form", local: true) do |form| %>
                   <div class="input-group">
-                    <%= form.text_field :tag_name, placeholder: "キーワード", class: "form-control custom-search-input" %>
+                    <%= form.text_field :tag_name, placeholder: "Keyword", class: "form-control custom-search-input" %>
                     <div class="input-group-append">
-                      <%= form.submit "検索", class: "btn btn-light text-nowrap search-btn" %>
+                      <%= form.submit "Search", class: "btn btn-light text-nowrap search-btn" %>
                     </div>
                   </div>
                 <% end %>  
@@ -46,27 +47,42 @@
           </ul>
           <ul class="navbar-nav ms-auto">
             <% if current_user && !(controller_name == "posts" && action_name == "new") %>
-              <li class="nav-item"><%= link_to "投稿する", new_post_path, class: "nav-link" %></li>
+              <li class="nav-item">
+                <%= link_to new_post_path, class: "nav-link" do %>
+                  <i class="fa-sharp fa-solid fa-pen"></i> New post
+                <% end %>
+              </li>
             <% end %>
+
             <% if current_user %>
-              <li class="nav-item"><%= link_to "いいね", likes_user_path(current_user), class: "nav-link" %></li>
+              <li class="nav-item">
+                <%= link_to likes_user_path(current_user), class: "nav-link" do %>
+                  <i class="fa-sharp fa-solid fa-heart"></i> Like
+                <% end %>
+              </li>
+
               <li class="nav-item dropdown" data-turbo-method="false">
-                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><%= current_user.nickname %></a>
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                  <i class="fa-solid fa-user"></i> <%= current_user.nickname %>
+                </a>
                 <ul class="dropdown-menu">
-                  <li><%= link_to 'マイページ', user_path(current_user), class: "dropdown-item" %></li>
-                  <li><%= link_to 'ログアウト', destroy_user_session_path, class: 'dropdown-item', data: { turbo_method: :delete } %></li>
+                  <li><%= link_to 'My page', user_path(current_user), class: "dropdown-item" %></li>
+                  <li><%= link_to 'Log out', destroy_user_session_path, class: 'dropdown-item', data: { turbo_method: :delete } %></li>
                 </ul>
               </li>
             <% else %>
               <% if controller_name == "sessions" %>
-                <li class="nav-item"><%= link_to "新規登録", new_user_registration_path, class: "nav-link" %></li>
+                <li class="nav-item"><%= link_to "Sign up", new_user_registration_path, class: "nav-link" %></li>
               <% elsif controller_name == "registrations" %>
-                <li class="nav-item"><%= link_to "ログイン", new_user_session_path, class: "nav-link" %></li>
+                <li class="nav-item"><%= link_to "Log in", new_user_session_path, class: "nav-link" %></li>
               <% else %>
-                <li class="nav-item"><%= link_to "ログイン", new_user_session_path, class: "nav-link" %></li>
-                <li class="nav-item"><%= link_to "新規登録", new_user_registration_path, class: "nav-link" %></li>
+                <li class="nav-item"><%= link_to "Log in", new_user_session_path, class: "nav-link" %></li>
+                <li class="nav-item"><%= link_to "Sign up", new_user_registration_path, class: "nav-link" %></li>
               <% end %>            
             <% end %>
+
+
+
           </ul>
         </div>
       </div>
