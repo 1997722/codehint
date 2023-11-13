@@ -11,36 +11,86 @@ body {
 .profile-img {
   border-radius: 50%;
   max-width: 200px;
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.profile-info {
+  text-align: center;
+}
+
+.profile-section {
+  margin-top: 20px; /* Add margin to the top of the profile section */
+  border-top: 2px solid #ccc; /* Add a border at the top */
+  padding-top: 20px; /* Add padding for spacing */
+}
+
+/* Add white underline to specific h4 elements */
+h4.text-center.underline {
+  text-decoration: underline white;
 }
 </style>
+
 <div class="container">
   <!-- アプリの説明 -->
   <div class="section">
-    <h2>アプリの説明</h2>
-    <p>ここにアプリの説明を記述します。</p>
+    <h1 class="text-center">What is "Share"?</h1>
+    <br>
+    <p class="text-center">”Share”とは、コーディネート写真投稿アプリです👗</p>
+    <p class="text-center">コーディネートを”Share"して、コーディネートのお悩み解決！</p>
+    <p class="text-center">性別や年齢、仕事など関係なく、ファッションも自分らしく自由な時代だからこそ、</p>
+    <p class="text-center">リアルなユーザーが発信出来るこのアプリを使えば、</p>
+    <p class="text-center">参考になるコーディネートがたくさん見つかるはず✨</p>
   </div>
-
-  <!-- このサービスを作った想い -->
+  <div class="col-md-12 text-center">
+    <img src="<%= asset_path("about2.png") %>" class="d-block w-100 img-fluid" alt="Hero Image">
+  </div>
+<br>
   <div class="section">
-    <h2>このサービスを作った想い</h2>
-    <p>ここにサービスを作った背景や目的を記述します。</p>
+    <h4 class="text-center underline">"Share"するのは、コーディネートだけじゃない！</h4>
+    <br>
+    <p class="text-center">素敵な一言と複数のタグ付けが可能！</p>
+    <p class="text-center">コーディネートのポイントがたくさんあったら、</p>
+    <p class="text-center">複数のタグを付けて世界中に”Share"をしよう🌐</p>
+    <p class="text-center">詳細ページでは、コメントの投稿も出来ます！</p>
   </div>
-
+<br>
+  <div class="section">
+    <h4 class="text-center underline">みんなが”Share”した投稿を検索し、お悩み解決！</h4>
+    <br>
+    <p class="text-center">検索することで、自分の悩みに合ったコーディネートを見つけることが出来ます！</p>
+    <p class="text-center">例えば、気温、年代、シーンなど、、お悩みのタグを検索して見てください。</p>
+    <p class="text-center">トップページでは、最も人気なタグの投稿をご紹介しています💐</p>
+    
+  </div>
+<br>
+  <div class="section">
+    <h4 class="text-center underline">いいね🤍で”Share”を実用的に！</h4>
+    <br>
+    <p class="text-center">いいなと思った投稿は、後で見返せるように保存出来ます☺️</p>
+    <p class="text-center">投稿のハートボタンをクリックするだけ！</p>
+    <p class="text-center">Likedで一覧表示が出来るので、とても便利です🪄</p>
+  </div>
+<br>
+<br>
 <!-- 作成者のプロフィール -->
-  <div class="section">
-    <h2>作成者のプロフィール</h2>
+  <div class="section profile-section">
+    <h4 class="text-center">＜About the Creator＞</h4>
+    <br>
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-12 text-center">
       <!-- 作成者の写真 -->
-        <img src="path/to/profile-image.jpg" alt="Profile Image" class="img-fluid profile-img">
+        <img src="<%= asset_path("IMG_2173 3.jpg") %>" alt="Profile Image" class="img-fluid profile-img">
+        <br>
       </div>
-      <div class="col-md-8">
+      <div class="col-md-12 profile-info">
         <!-- 作成者のプロフィール情報 -->
-        <p>作成者の名前: ここに名前を記述</p>
-        <p>作成者の経歴や趣味など、その他のプロフィール情報を記述します。</p>
+        <h5>Asuka Takeuchi</h5>
+        <p>前職で、5年以上ファッション業界に携わる。</p>
+        <p>現在は、多くの方の生活を豊かに出来るサービスを作りたく、</p>
+        <p>プログラミングを学習中です💻</p>
       </div>
     </div>
   </div>
 </div>
-
-

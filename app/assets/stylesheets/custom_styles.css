@@ -9,3 +9,58 @@
   color: #ff1493; /* 濃いピンク */
   font-size: 1.5em; /* 同じく1.2emでサイズを大きく調整 */
 }
+
+/*カルーセルの画像サイズ*/
+.carousel-item .img-fluid {
+  width:100%;
+  height:auto;
+}
+
+.carousel-item{
+  height: auto;
+}
+
+.carousel-item a {
+  display: block;
+  width:100%;
+}
+
+.carousel-item .show-image {
+  display: block;
+  width:100%;
+}
+
+/* カスタムアスペクト比スタイル */
+.aspect-ratio {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: calc(75%); /* 4:3のアスペクト比の場合 */
+  overflow: hidden;
+}
+
+.aspect-ratio-item {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.aspect-ratio-item img {
+  width: 100%; /* 画像を100%に拡大せずに表示 */
+  height: 100%; /* カードに合わせて高さを100%に設定 */
+  object-fit: contain; /* 画像を縦横比を保ちつつ表示 */
+}
+
+/* 検索フォームと検索ボタン */
+.search-form {
+  display: flex;
+    align-items: center;
+}
+
+.search-form .custom-search-input {
+  flex: 3; /* 検索フォームの幅を広げます */
+  margin-right: 10px; /* ボタンとの間に隙間を作ります */
+  width: 100%; /* 幅を調整します */
+}
