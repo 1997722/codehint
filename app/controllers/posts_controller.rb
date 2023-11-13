@@ -1,13 +1,17 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, except: :index
   before_action :set_post, only: [:edit, :show, :update, :destroy]
   # before_action :move_to_index, except: [:index, :show, :search]
-
+  
   def index
     @tag_list = Tag.all 
-    @posts = Post.all
-    @post = current_user.posts.new
-    @posts = Post.includes(:user).order("created_at DESC")     
     @tag = Tag.find(params[:tag_id]) if params[:tag_id].present?
+  
+    if user_signed_in?
+      @post = current_user.posts.new
+    end
+  
+    @posts = Post.includes(:user).order("created_at DESC")
   end
 
   def new

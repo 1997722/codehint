@@ -12,10 +12,12 @@
       </div>
       <div class="card-body">
         <div class="text-start"> <!-- 左上に@post.content配置 -->
-            <h2 class="card-title"style="font-family: 'Your-Font-Name', sans-serif; font-size: 24px; font-weight: 600; color: #333;"><%= @post.content %></h2>
+            <h2 class="card-title" style="font-family: 'Your-Font-Name', sans-serif; font-size: 24px; font-weight: 600; color: #333;"><%= @post.content %></h2>
         </div>
           <% @post.tags.each do |tag| %>
-            <span class="badge bg-primary"><%= tag.tag_name %></span>
+            <span class="badge bg-secondary">
+              <i class="fas fa-tag"></i> <%= tag.tag_name %>
+            </span>
           <% end %>
         <div class="text-center">
           <!-- 編集、削除ボタン (ログイン中の投稿者のみ表示) -->
@@ -26,28 +28,54 @@
             </div>
           <% end %>
         </div>
+        <br>
+        <div id="like-btn<%= @post.id %>">
+          <%= render partial: "likes/like", locals: { post: @post } %>
+        </div>
+        <br>
         <div class="text-end"> <!-- 右下に@post.user.nickname配置 -->
           <small class="text-muted">
-            投稿者: <%= link_to @post.user.nickname, user_path(@post.user), style: 'color: gray;' %>
+            投稿者: <%= link_to @post.user.nickname, user_path(@post.user), style: 'color: gray;' %>さん
           </small>
         </div>
-        <div id="comments">
-          <h4>＜コメント一覧＞</h4>
-            <% @post.comments.each do |comment| %>
-              <div class="comment">
-                <p class="user-info"><%= comment.user.nickname %>： </p>
-                <p><%= comment.content%></p>
-              </div>
+        <br>
+        <div id="comments" class="text-center">
+          <div id="comments">
+            <h4>＜ List of comments ＞</h4>
+              <% @post.comments.each do |comment| %>
+                <div class="comment">
+                  <p class="user-info"><%= comment.user.nickname %>： </p>
+                  <p><%= comment.content %></p>
+                </div>
+              <% end %>
+          </div>
+          <div class="comment-form mt-4 d-flex justify-content-center">
+            <% if user_signed_in? %>
+              <%= form_with model: [@post, @comment], id: "comment-form" do |f| %>
+                <div class="mb-3">
+                <%= f.text_area :content, class: "form-control comment-text", placeholder: "コメントを入力してね", id: "commentContent" %>
+                </div> 
+                <div class="text-center">
+                  <%= f.submit "Send", class: "comment-submit btn btn-secondary", onclick: "submitComment()" %>
+                </div>
+              <% end %>
             <% end %>
+          </div>
         </div>
-        <div class="comment-form">
-          <% if user_signed_in? %>
-            <%= form_with model: [@post, @comment], id: "comment-form" do |f| %>
-              <%= f.text_area :content , class: "comment-text"%>
-              <%= f.submit "コメントをする", class: "comment-submit" %>
-            <% end %>
-          <% end %>
-        </div>
+        <script>
+          function submitComment() {
+            // コメントの内容を取得
+            var commentContent = document.getElementById('commentContent').value;
+
+            // コメントが空であれば送信をキャンセル
+            if (commentContent.trim() === '') {
+              alert('コメント内容が空です。');
+            } else {
+              // コメントが空でなければフォームを送信
+              document.getElementById('comment-form').submit();
+            }
+          }
+        </script>
       </div>
     </div>
   </div>

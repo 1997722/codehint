@@ -1,54 +1,10 @@
-<div class="container">
-  <div class="card mb-4">
-    <div class="carousel slide" data-bs-ride="carousel" id="crs1">
-    <div class="carousel-indicators">
-      <button data-bs-target="#crs1" data-bs-slide-to="0" class="active"></button>
-      <button data-bs-target="#crs1" data-bs-slide-to="1"></button>
-    </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <a href="<%= about_path %>">
-          <img src="<%= asset_path("about.jpg") %>" class="d-block w-100 img-fluid" alt="Hero Image">
-        </a>
-        <div class="carousel-caption text-end">
-          <h4 class="d-md-block">Hi, I’m Share.</h4>
-          <p class="mb-2 d-md-block">About us.</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <a href="<%= tags_path %>">
-          <img src="<%= asset_path("topics.jpg") %>" class="d-block w-100 img-fluid" alt="Topics Image">
-        </a>
-        <div class="carousel-caption text-end">
-          <h4 class="d-md-block">Pick up!!</h4>
-          <p class="mb-2 d-md-block">Most popular keywords now.</p>
-        </div>
-      </div>
-    </div>
-    <button class="carousel-control-prev" data-bs-target="#crs1" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon"></span>
-      <span class="visually-hidden">前へ</span>
-    </button>
-    <button class="carousel-control-next" data-bs-target="#crs1" data-bs-slide="next">
-      <span class="carousel-control-next-icon"></span>
-      <span class="visually-hidden">次へ</span>
-    </button>
-  </div>
-  <br>
-  <% if flash[:notice].present? %>
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-      <%= flash[:notice] %>
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-  <% elsif flash[:alert].present? %>
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-      <%= flash[:alert] %>
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-  <% end %>
-  <br>
+<h1 class="text-center"> Most Popular Tags 🥇</h1>
+<p class="text-center mb-2 d-md-block">今、1番人気のタグをご紹介！！</p>
+
+<% most_used_tag = @tags.first %>
+<% if most_used_tag %>
   <div class="row">
-    <% @posts.each do |post| %>
+    <% most_used_tag.posts.each do |post| %>
       <div class="col-md-4 mb-4">
         <div class="card">
           <!-- 投稿画像 -->
@@ -99,4 +55,6 @@
       </div>
     <% end %>
   </div>
-</div>
+<% else %>
+  <p>No tags found</p>
+<% end %>

@@ -1,8 +1,8 @@
 <div class="container">
-  <h3 class="text-center">編集する</h3>
+  <h1 class="text-center">Let's edit!</h1>
   <%= form_with(model: @post, local: true) do |form| %>
     <div class="form-group">
-      <%= form.text_area :content, class: "form-control posts-text", id: "post-info", placeholder: "コーディネートの説明（必須 400文字まで）", rows: "7", maxlength: "400" %>
+      <%= form.text_area :content, class: "form-control posts-text", id: "post-info", placeholder: "コーディネートの説明を一言！", rows: "4", maxlength: "40" %>
     </div>
     <br>
     <div class="form-group">
