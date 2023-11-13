@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja" data-bs-theme="auto">
   <head>
     <meta charset="utf-8">
@@ -9,90 +9,95 @@
     <%= stylesheet_link_tag 'application', 'custom_styles', media: 'all', "data-turbo-track": "reload" %>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <%= javascript_importmap_tags %>
-    <style>
-      /* カスタムCSSを追加 */
-      .search-form {
-        display: flex;
-        align-items: center;
-      }
-
-      .search-form .custom-search-input {
-        flex: 3; /* 検索フォームの幅を広げます */
-        margin-right: 10px; /* ボタンとの間に隙間を作ります */
-      }
-    </style>
   </head>
-  <body style="padding-top:5rem;">
-  <div class="container">   
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="<%= root_path %>">
-          <i class="fa-solid fa-hand-holding-heart"></i> Share
-        </a>
-        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#main_nav" data-turbo-method="false">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="main_nav">
-          <ul class="navbar-nav mx-auto">
-            <li class="nav-item">
-                <%= form_with(url: search_posts_path, method: :get, class: "search-form", local: true) do |form| %>
-                  <div class="input-group">
-                    <%= form.text_field :tag_name, placeholder: "Keyword", class: "form-control custom-search-input" %>
-                    <div class="input-group-append">
-                      <%= form.submit "Search", class: "btn btn-light text-nowrap search-btn" %>
+  <body style="padding-top: 5rem;">
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="<%= root_path %>">
+            <i class="fa-solid fa-hand-holding-heart"></i> Share
+          </a>
+          <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#main_nav" data-turbo-method="false">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="main_nav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <%= link_to about_path, class: "nav-link" do %>
+                  <i class="fa-solid fa-users"></i> About
+                <% end %>
+              </li>
+              <% if current_user %>
+                <li class="nav-item">
+                  <%= link_to new_post_path, class: "nav-link" do %>
+                    <i class="fa-sharp fa-solid fa-pen"></i> New post
+                  <% end %>
+                </li>
+              <% end %>
+              <% if current_user %>
+                <li class="nav-item">
+                  <%= link_to likes_user_path(current_user), class: "nav-link" do %>
+                    <i class="fa-sharp fa-solid fa-heart"></i> Liked
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+            <ul class="navbar-nav ms-auto">
+              <% if current_user %>
+                <li class="nav-item">
+                  <%= form_with(url: search_posts_path, method: :get, class: "search-form", local: true) do |form| %>
+                    <div class="input-group">
+                      <%= form.text_field :tag_name, placeholder: "Keyword", class: "form-control custom-search-input" %>
+                      <div class="input-group-append">
+                        <%= form.submit "Search", class: "btn btn-light text-nowrap search-btn" %>
+                      </div>
                     </div>
-                  </div>
-                <% end %>  
-            </li>
-          </ul>
-          <ul class="navbar-nav ms-auto">
-            <% if current_user && !(controller_name == "posts" && action_name == "new") %>
-              <li class="nav-item">
-                <%= link_to new_post_path, class: "nav-link" do %>
-                  <i class="fa-sharp fa-solid fa-pen"></i> New post
-                <% end %>
-              </li>
-            <% end %>
-
-            <% if current_user %>
-              <li class="nav-item">
-                <%= link_to likes_user_path(current_user), class: "nav-link" do %>
-                  <i class="fa-sharp fa-solid fa-heart"></i> Like
-                <% end %>
-              </li>
-
-              <li class="nav-item dropdown" data-turbo-method="false">
-                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                  <i class="fa-solid fa-user"></i> <%= current_user.nickname %>
-                </a>
-                <ul class="dropdown-menu">
-                  <li><%= link_to 'My page', user_path(current_user), class: "dropdown-item" %></li>
-                  <li><%= link_to 'Log out', destroy_user_session_path, class: 'dropdown-item', data: { turbo_method: :delete } %></li>
-                </ul>
-              </li>
-            <% else %>
-              <% if controller_name == "sessions" %>
-                <li class="nav-item"><%= link_to "Sign up", new_user_registration_path, class: "nav-link" %></li>
-              <% elsif controller_name == "registrations" %>
-                <li class="nav-item"><%= link_to "Log in", new_user_session_path, class: "nav-link" %></li>
+                  <% end %>  
+                </li>
+              <% end %>
+              <% if current_user %>
+                <li class="nav-item dropdown" data-turbo-method="false">
+                  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                    <i class="fa-solid fa-user"></i> <%= current_user.nickname %>さん
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><%= link_to 'My page', user_path(current_user), class: "dropdown-item" %></li>
+                    <li><%= link_to 'Log out', destroy_user_session_path, class: 'dropdown-item', data: { turbo_method: :delete } %></li>
+                  </ul>
+                </li>
               <% else %>
-                <li class="nav-item"><%= link_to "Log in", new_user_session_path, class: "nav-link" %></li>
-                <li class="nav-item"><%= link_to "Sign up", new_user_registration_path, class: "nav-link" %></li>
-              <% end %>            
-            <% end %>
-
-
-
-          </ul>
+                <% if controller_name == "sessions" %>
+                  <li class="nav-item">
+                    <%= link_to new_user_registration_path, class: "nav-link" do %>
+                      <i class="fa-regular fa-user"></i> Sign up
+                    <% end %>
+                  </li>
+                <% elsif controller_name == "registrations" %>
+                  <li class="nav-item">
+                    <%= link_to new_user_session_path, class: "nav-link" do %>
+                      <i class="fa-solid fa-arrow-right-to-bracket"></i> Log in
+                    <% end %>
+                  </li>
+                <% else %>
+                  <li class="nav-item">
+                    <%= link_to new_user_session_path, class: "nav-link" do %>
+                      <i class="fa-solid fa-arrow-right-to-bracket"></i> Log in
+                    <% end %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to new_user_registration_path, class: "nav-link" do %>
+                      <i class="fa-regular fa-user"></i> Sign up
+                    <% end %>
+                  </li>
+                <% end %>
+              <% end %>
+            </ul>
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
 
-    
-    
-
-      
       <%= yield %>
-  </div>
+    </div>
   </body>
 </html>

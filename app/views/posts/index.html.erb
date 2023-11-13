@@ -6,12 +6,24 @@
       <button data-bs-target="#crs1" data-bs-slide-to="1"></button>
     </div>
     <div class="carousel-inner">
-      <div class="carousel-item active"><img src="<%= asset_path("hero.jpg") %>" class="d-block w-100"></div>
-        <div class="carousel-caption d-none d-md-block">
-          <h4>Share</h4>
-          <p class="mb-2">Happy people make happy fashion.</p>
+      <div class="carousel-item active">
+        <a href="<%= about_path %>">
+          <img src="<%= asset_path("about.jpg") %>" class="d-block w-100 img-fluid" alt="Hero Image">
+        </a>
+        <div class="carousel-caption text-end">
+          <h4 class="d-md-block">Hi, I’m Share.</h4>
+          <p class="mb-2 d-md-block">About us.</p>
         </div>
-      <div class="carousel-item"><img src="<%= asset_path("hero.jpg") %>" class="d-block w-100"></div>
+      </div>
+      <div class="carousel-item">
+        <a href="<%= tags_path %>">
+          <img src="<%= asset_path("topics.jpg") %>" class="d-block w-100 img-fluid" alt="Topics Image">
+        </a>
+        <div class="carousel-caption text-end">
+          <h4 class="d-md-block">Pick up!!</h4>
+          <p class="mb-2 d-md-block">Most popular keywords now.</p>
+        </div>
+      </div>
     </div>
     <button class="carousel-control-prev" data-bs-target="#crs1" data-bs-slide="prev">
       <span class="carousel-control-prev-icon"></span>
@@ -40,10 +52,10 @@
       <div class="col-md-4 mb-4">
         <div class="card">
           <!-- 投稿画像 -->
-          <div class="post-image-container position-relative">
+          <div class="aspect-ratio">
             <% if post.image.attached? %>
-              <%= link_to post, style: 'position: relative;' do %>
-                <%= image_tag post.image, class: 'card-img-top post-image' %>
+              <%= link_to post, class: 'aspect-ratio-item' do %>
+                <%= image_tag post.image, class: 'card-img-top post-image aspect-ratio-item' %>
                 <div class="overlay">
                   <span class="text"></span>
                 </div>
@@ -68,6 +80,9 @@
                     <%= link_to '削除', post_path(post.id), data: { turbo_method: :delete }, class: 'btn btn-sm btn-outline-secondary' %>
                   </div>
                 </div>
+              <% else %>
+              <!-- ボタンがない場合の空白を追加 -->
+              <div style="height: 32px;"></div>
               <% end %>
             </div>
             <br>
@@ -75,8 +90,8 @@
               <%= render partial: "likes/like", locals: { post: post } %>
             </div>
             <div class="text-end">
-              <small class="text-muted ">
-                投稿者: <%= link_to post.user.nickname, user_path(post.user), style: 'color: gray;' %>
+              <small class="text-muted">
+                投稿者: <%= link_to post.user.nickname, user_path(post.user), style: 'color: gray;' %>さん
               </small>
             </div>
           </div>
