@@ -80,3 +80,7 @@ gem 'image_processing', '~> 1.2'
 gem 'pry-rails'
 gem 'font-awesome-sass'
 gem 'font-awesome-rails'
+
+group :production do
+  gem 'pg'
+end
