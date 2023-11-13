@@ -1,0 +1,60 @@
+<h1 class="text-center"> Most Popular Tags 🥇</h1>
+<p class="text-center mb-2 d-md-block">今、1番人気のタグをご紹介！！</p>
+
+<% most_used_tag = @tags.first %>
+<% if most_used_tag %>
+  <div class="row">
+    <% most_used_tag.posts.each do |post| %>
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <!-- 投稿画像 -->
+          <div class="aspect-ratio">
+            <% if post.image.attached? %>
+              <%= link_to post, class: 'aspect-ratio-item' do %>
+                <%= image_tag post.image, class: 'card-img-top post-image aspect-ratio-item' %>
+                <div class="overlay">
+                  <span class="text"></span>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="card-body">
+            <p class="card-text"><%= post.content %></p>
+            <p class="card-text">
+              <% post.tags.each do |tag| %>
+                <span class="badge bg-secondary">
+                  <i class="fas fa-tag"></i> <%= tag.tag_name %>
+                </span>
+              <% end %>
+            </p>
+            <!-- 編集、削除ボタン (ログイン中の投稿者のみ表示) -->
+            <div class="text-center">
+              <% if user_signed_in? && current_user == post.user %>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <%= link_to '編集', edit_post_path(post), class: 'btn btn-sm btn-outline-secondary' %>
+                    <%= link_to '削除', post_path(post.id), data: { turbo_method: :delete }, class: 'btn btn-sm btn-outline-secondary' %>
+                  </div>
+                </div>
+              <% else %>
+              <!-- ボタンがない場合の空白を追加 -->
+              <div style="height: 32px;"></div>
+              <% end %>
+            </div>
+            <br>
+            <div id="like-btn<%= post.id %>">
+              <%= render partial: "likes/like", locals: { post: post } %>
+            </div>
+            <div class="text-end">
+              <small class="text-muted">
+                投稿者: <%= link_to post.user.nickname, user_path(post.user), style: 'color: gray;' %>さん
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <p>No tags found</p>
+<% end %>
