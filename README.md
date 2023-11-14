@@ -1,7 +1,7 @@
 # Share🌐🤍
 ### ”Share”とは、コーディネート写真投稿アプリです👗
-    コーディネートを”Share"して、コーディネートのお悩み解決をお手伝いします！
-    ファッションも自分らしく自由な時代だからこそ、リアルなユーザーが発信出来るこのアプリを使えば、参考になるコーディネートがきっと見つかるはず✨
+コーディネートを”Share"して、コーディネートのお悩み解決をお手伝いします！
+ファッションも自分らしく自由な時代だからこそ、リアルなユーザーが発信出来るこのアプリを使えば、参考になるコーディネートがきっと見つかるはず✨
 
 [![Image from Gyazo](https://i.gyazo.com/28ab1a2f35c55cfd8ea2b56f6d97b49d.jpg)](https://gyazo.com/28ab1a2f35c55cfd8ea2b56f6d97b49d)
 
@@ -37,15 +37,19 @@
 [![Image from Gyazo](https://i.gyazo.com/8f2e87e2c2e42e3f000086989fadb760.gif)](https://gyazo.com/8f2e87e2c2e42e3f000086989fadb760)
 
 ### マイページ
+
 [![Image from Gyazo](https://i.gyazo.com/0abbd9be600554d0432c043f9da30436.gif)](https://gyazo.com/0abbd9be600554d0432c043f9da30436)
 
 ### 投稿詳細ページ
+
 [![Image from Gyazo](https://i.gyazo.com/5b0f946ce2ae94eee3bf70c27a5dc436.gif)](https://gyazo.com/5b0f946ce2ae94eee3bf70c27a5dc436)
 
 ### 1番人気のタグの投稿一覧ページ
+
 [![Image from Gyazo](https://i.gyazo.com/627d808876610f881df63875290d023a.gif)](https://gyazo.com/627d808876610f881df63875290d023a)
 
 ### アプリの説明ページ
+
 [![Image from Gyazo](https://i.gyazo.com/b105f0edee7d188ac19e4e801dd9906a.gif)](https://gyazo.com/b105f0edee7d188ac19e4e801dd9906a)
 
 ### ER図
