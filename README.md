@@ -37,22 +37,18 @@
 [![Image from Gyazo](https://i.gyazo.com/8f2e87e2c2e42e3f000086989fadb760.gif)](https://gyazo.com/8f2e87e2c2e42e3f000086989fadb760)
 
 ### マイページ
-
 [![Image from Gyazo](https://i.gyazo.com/0abbd9be600554d0432c043f9da30436.gif)](https://gyazo.com/0abbd9be600554d0432c043f9da30436)
 
 ### 投稿詳細ページ
-
 [![Image from Gyazo](https://i.gyazo.com/5b0f946ce2ae94eee3bf70c27a5dc436.gif)](https://gyazo.com/5b0f946ce2ae94eee3bf70c27a5dc436)
 
 ### 1番人気のタグの投稿一覧ページ
-
 [![Image from Gyazo](https://i.gyazo.com/627d808876610f881df63875290d023a.gif)](https://gyazo.com/627d808876610f881df63875290d023a)
 
 ### アプリの説明ページ
-
 [![Image from Gyazo](https://i.gyazo.com/b105f0edee7d188ac19e4e801dd9906a.gif)](https://gyazo.com/b105f0edee7d188ac19e4e801dd9906a)
 
-### ER図
+## ■ER図
 [![Image from Gyazo](https://i.gyazo.com/6b43b81c550db0a32e48a0eed30bea8c.png)](https://gyazo.com/6b43b81c550db0a32e48a0eed30bea8c)
 
 ## ■使用技術
@@ -76,9 +72,7 @@
 #### ・Git/GitHub
 
 ## ■今後実装したいもの
-#### ・フォロー機能
 #### ・気に入ったコーディネートの購入機能(気に入ったアイテムのタグをクリックすると、購入ページへ遷移)
-#### ・トップページに天気予報の表示
 
 
 
