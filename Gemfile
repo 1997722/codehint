@@ -86,3 +86,4 @@ end
 gem 'kaminari'
 gem 'httparty'
 gem 'rest-client'
+gem 'bootstrap', '~> 5.1', '>= 5.1.3'
