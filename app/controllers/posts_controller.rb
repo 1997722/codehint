@@ -10,6 +10,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.new if user_signed_in?
 
     @posts = Post.includes(:user).order('created_at DESC')
+    @posts = Post.all.page(params[:page]).per(12)
   end
 
   def new

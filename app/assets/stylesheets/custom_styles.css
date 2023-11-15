@@ -64,3 +64,36 @@
   margin-right: 10px; /* ボタンとの間に隙間を作ります */
   width: 100%; /* 幅を調整します */
 }
+
+ /* ページネーションのデザイン */
+.text-center {
+  text-align: center;
+}
+
+.pagination {
+  display: inline-block;
+}
+
+.pagination>li {
+  display: inline-block;
+  margin-right: 5px; /* ページネーションリンク間の間隔を調整 */
+}
+
+.pagination>li>a {
+  border: none; /* 枠線をなくす */
+  color: #696969; /* 文字の色を変える */
+  padding: 5px 10px; /* ページネーションリンクの余白を調整 */
+  text-decoration: none;
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {
+  background: #93c9ff; /* 背景の色を変える */
+  border-radius: 15px; /* 角を丸くする */
+  color: #fff; /* 文字の色を変える */
+}
+
+/* ホバー時のデザイン */
+.pagination>li>a:hover {
+  border-radius: 15px; /* 角を丸くする */
+}
