@@ -85,3 +85,5 @@ group :production do
   gem 'pg'
 end
 gem 'kaminari'
+gem 'httparty'
+gem 'rest-client'
