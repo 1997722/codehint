@@ -74,7 +74,6 @@ end
 
 gem 'devise'
 gem 'jquery-rails'
-gem 'bootstrap', '~> 5.3.2'
 
 gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
