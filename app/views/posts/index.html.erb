@@ -8,21 +8,13 @@
     <div class="carousel-inner">
       <div class="carousel-item active">
         <a href="<%= about_path %>">
-          <img src="<%= asset_path("about.jpg") %>" class="d-block w-100 img-fluid" alt="Hero Image">
+          <img src="<%= asset_path("phonto 2.jpg") %>" class="d-block w-100 img-fluid" alt="Hero Image">
         </a>
-        <div class="carousel-caption text-end">
-          <h4 class="d-md-block">Hi, I’m Share.</h4>
-          <p class="mb-2 d-md-block">About us.</p>
-        </div>
       </div>
       <div class="carousel-item">
         <a href="<%= tags_path %>">
-          <img src="<%= asset_path("topics.jpg") %>" class="d-block w-100 img-fluid" alt="Topics Image">
+          <img src="<%= asset_path("tag.jpg") %>" class="d-block w-100 img-fluid" alt="Topics Image">
         </a>
-        <div class="carousel-caption text-end">
-          <h4 class="d-md-block">Pick up!!</h4>
-          <p class="mb-2 d-md-block">Most popular keywords now.</p>
-        </div>
       </div>
     </div>
     <button class="carousel-control-prev" data-bs-target="#crs1" data-bs-slide="prev">
@@ -98,5 +90,8 @@
         </div>
       </div>
     <% end %>
+  </div>
+  <div class="text-center">
+    <%= paginate @posts %>
   </div>
 </div>
