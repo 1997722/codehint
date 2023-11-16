@@ -88,7 +88,7 @@
 
 /* 表示しているページ番号のデザイン */
 .pagination>.active>a {
-  background: #93c9ff; /* 背景の色を変える */
+  background: #ffcccc; /* 背景の色を変える */
   border-radius: 15px; /* 角を丸くする */
   color: #fff; /* 文字の色を変える */
 }
@@ -102,6 +102,7 @@
 .weather-info {
   width: 18vw; /* 横幅を50%に設定 */
   padding: 5px;
+  border: none; /* 枠線を削除 */
 }
 
 .temperature {
@@ -109,3 +110,29 @@
   
 }
 
+/* ページトップの間隔 */
+.navbar {
+  min-height: auto; /* ナビゲーションバーの最小高さを設定 */
+  padding-top: 10px; /* 上部の余白を設定 */
+  padding-bottom: 10px; /* 下部の余白を設定 */
+}
+
+.container {
+  padding-top: 30px; /* 上部の余白 */
+  padding-bottom: 10px; /* 下部の余白 */
+  padding-left: 0; /* 左側の余白を無くす */
+  padding-right: 0; /* 右側の余白を無くす */
+}
+
+/* ログインフォーム要素を中央配置 */
+.form-control {
+  width: 100%;
+  margin: auto;
+  text-align: left;
+}
+
+/* ログインボタンの色を変更 */
+.btn-primary {
+  background-color: #93c9ff;
+  border-color: #93c9ff;
+}
