@@ -2,52 +2,174 @@
   <div class="row">
     <div class="col-md-12">
       <!-- ページタイトルとしてユーザー名の投稿一覧を表示 -->
-      <h1 class="text-center">List of posts by <%= @nickname %> ✨</h1>
-      <p class="text-center"><%= @nickname %>さんの投稿を一覧表示しています！</p>
-    </div>
-  </div>
-  <div class="row">
-    <% @posts.each do |post| %>
-      <div class="col-md-4 mb-4">
-        <div class="card">
-          <!-- 投稿画像 -->
-          <div class="aspect-ratio">
-            <% if post.image.attached? %>
-              <%= link_to post, class: 'aspect-ratio-item' do %>
-                <%= image_tag post.image, class: 'card-img-top post-image' %>
-                <div class="overlay">
-                  <span class="text"></span>
-                </div>
-              <% end %>
-            <% end %>
-          </div>
-          <div class="card-body">
-            <p class="card-text"><%= post.content %></p>
-            <p class="card-text">
-              <% post.tags.each do |tag| %>
-                <span class="badge bg-secondary">
-                  <i class="fas fa-tag"></i> <%= tag.tag_name %>
-                </span>
-              <% end %>
-            </p>
-            <!-- 編集、削除ボタン (ログイン中の投稿者のみ表示) -->
-            <div class="text-center">
-              <% if user_signed_in? && current_user == post.user %>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <%= link_to '編集', edit_post_path(post), class: 'btn btn-sm btn-outline-secondary' %>
-                    <%= link_to '削除', post_path(post.id), data: { turbo_method: :delete }, class: 'btn btn-sm btn-outline-secondary' %>
+      <h1 class="mt-5 mb-4"><%= @nickname %>'s page✨</h1>
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#d22">Posts</button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#d25">Liked</button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#d26">Flower</button>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="d22">
+          <h4 class="mt-3">List of posts by <%= @nickname %> </h4>
+          <p><%= @nickname %>さんの投稿を一覧表示しています！<br class="d-none d-md-inline"></p>
+          <div class="row">
+            <% @posts.each do |post| %>
+              <div class="col-md-4 mb-4">
+                <div class="card">
+                  <!-- 投稿画像 -->
+                  <div class="aspect-ratio">
+                    <% if post.image.attached? %>
+                      <%= link_to post, class: 'aspect-ratio-item' do %>
+                        <%= image_tag post.image, class: 'card-img-top post-image' %>
+                        <div class="overlay">
+                          <span class="text"></span>
+                        </div>
+                      <% end %>
+                    <% end %>
+                  </div>
+                  <div class="card-body">
+                    <p class="card-text"><%= post.content %></p>
+                    <p class="card-text">
+                      <% post.tags.each do |tag| %>
+                        <span class="badge bg-secondary">
+                          <i class="fas fa-tag"></i> <%= tag.tag_name %>
+                        </span>
+                      <% end %>
+                    </p>
+                    <!-- 編集、削除ボタン (ログイン中の投稿者のみ表示) -->
+                    <div class="text-center">
+                      <% if user_signed_in? && current_user == post.user %>
+                        <div class="d-flex justify-content-between align-items-center">
+                          <div class="btn-group">
+                            <%= link_to '編集', edit_post_path(post), class: 'btn btn-sm btn-outline-secondary' %>
+                            <%= link_to '削除', post_path(post.id), data: { turbo_method: :delete }, class: 'btn btn-sm btn-outline-secondary' %>
+                          </div>
+                        </div>
+                      <% end %>
+                    </div>
+                    <br>
+                    <div id="like-btn<%= post.id %>">
+                      <%= render partial: "likes/like", locals: { post: post } %>
+                    </div>
                   </div>
                 </div>
-              <% end %>
-            </div>
-            <br>
-            <div id="like-btn<%= post.id %>">
-              <%= render partial: "likes/like", locals: { post: post } %>
-            </div>
+              </div>
+            <% end %>
           </div>
         </div>
-      </div>
-    <% end %>
+        <div class="tab-pane fade" id="d25">
+          <h4 class="mt-3">List of liked posts 🤍</h4>
+          <p>いいねした投稿を一覧表示しています！<br class="d-none d-md-inline"></p>
+          <% if @like_posts.any? %>
+            <div class="row">
+              <% @like_posts.each do |like| %>
+                <% post = like.post %>
+                <% if post.present? && post.image.attached? %>
+                  <div class="col-md-4 mb-4">
+                    <div class="card">
+                      <!-- 投稿画像 -->
+                      <div class="aspect-ratio">
+                        <%= link_to post, class: 'aspect-ratio-item' do %>
+                          <%= image_tag post.image, class: 'card-img-top post-image' %>
+                          <div class="overlay">
+                            <span class="text"></span>
+                          </div>
+                        <% end %>
+                      </div>
+                      <div class="card-body">
+                        <p class="card-text"><%= post.content %></p>
+                        <p class="card-text">
+                          <% post.tags.each do |tag| %>
+                            <span class="badge bg-secondary">
+                              <i class="fas fa-tag"></i> <%= tag.tag_name %>
+                            </span>
+                          <% end %>
+                        </p>
+                        <!-- 編集、削除ボタン (ログイン中の投稿者のみ表示) -->
+                        <div class="text-center">
+                          <% if user_signed_in? && current_user == post.user %>
+                            <div class="d-flex justify-content-between align-items-center">
+                              <div class="btn-group">
+                                <%= link_to '編集', edit_post_path(post), class: 'btn btn-sm btn-outline-secondary' %>
+                                <%= link_to '削除', post_path(post), data: { turbo_method: :delete }, class: 'btn btn-sm btn-outline-secondary' %>
+                              </div>
+                            </div>
+                          <% else %>
+                            <!-- ボタンがない場合の空白を追加 -->
+                            <div style="height: 32px;"></div>
+                          <% end %>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+          <% else %>
+            <p>まだいいねした投稿がありません。</p>
+          <% end %>
+        </div>
+
+        <div class="tab-pane fade" id="d26">
+          <h4 class="mt-3">boot!! 料理教室 vol.16</h4>
+          <p>毎月恒例の料理教室を開催！<br class="d-none d-md-inline">
+              復習用に「レシピを記した小冊子」も配布いたします。</p>
+          <p><b>時間</b>　15:00 ～ 17:30<br><b>参加料</b>　（大人）1,500円、（子供）800円</p>
+        </div>
+      </div>   
+    </div>
   </div>
 </div>
+<%# <h1 class="text-center">List of posts by <%= @nickname %> 
+      <%# <p class="text-center"><%= @nickname %>
+  <%# <div class="row">
+    <% @posts.each do |post| %>
+      <%# <div class="col-md-4 mb-4"> %>
+        <%# <div class="card"> %>
+          <!-- 投稿画像 -->
+          <%# <div class="aspect-ratio"> %>
+            <%# <% if post.image.attached? %> 
+              <%# <%= link_to post, class: 'aspect-ratio-item' do %> 
+                <%# <%= image_tag post.image, class: 'card-img-top post-image' %> 
+                <%# <div class="overlay"> %>
+                  <%# <span class="text"></span> %>
+                <%# </div> %>
+              <%# <% end %> 
+            <%# <% end %> 
+          <%# </div> %>
+          <%# <div class="card-body"> %>
+            <%# <p class="card-text"><%= post.content %>
+            <%# <p class="card-text"> %>
+              <%# <% post.tags.each do |tag| %> 
+                <%# <span class="badge bg-secondary"> %>
+                  <%# <i class="fas fa-tag"></i> <%= tag.tag_name %> 
+                <%# </span> %>
+              <%# <% end %> 
+            <%# </p> %>
+            <!-- 編集、削除ボタン (ログイン中の投稿者のみ表示) -->
+            <%# <div class="text-center"> %>
+              <%# <% if user_signed_in? && current_user == post.user %> 
+                <%# <div class="d-flex justify-content-between align-items-center"> %>
+                  <%# <div class="btn-group"> %>
+                    <%# <%= link_to '編集', edit_post_path(post), class: 'btn btn-sm btn-outline-secondary' %> 
+                    <%# <%= link_to '削除', post_path(post.id), data: { turbo_method: :delete }, class: 'btn btn-sm btn-outline-secondary' %> 
+                  <%# </div> %>
+                <%# </div> %>
+              <%# <% end %> 
+            <%# </div> %>
+            <%# <br> %>
+            <%# <div id="like-btn<%= post.id %>
+              <%# <%= render partial: "likes/like", locals: { post: post } %> 
+            <%# </div> %>
+          <%# </div> %>
+        <%# </div> %>
+      <%# </div> %>
+    <%# <% end %> 
+  <%# </div> %> 
+
