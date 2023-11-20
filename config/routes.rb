@@ -11,10 +11,15 @@ Rails.application.routes.draw do
     resource :likes, only: [:create, :destroy]
     resources :comments, only: :create
   end
-  resources :users do
+  resources :users, only: [:index, :show] do
     member do
       get :likes
     end
+    member do
+      post 'follow', to: 'relationships#create' # フォローする
+      delete 'unfollow', to: 'relationships#destroy' # フォロー解除する
+    end
   end
   resources :tags, only: [:index]
+  
 end

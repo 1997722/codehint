@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:likes]
+  before_action :set_user, only: [:likes,:show]
   def show
     user = User.find(params[:id])
     @nickname = user.nickname
     @posts = user.posts
+    @like_posts =  @user.likes.includes(:post)
+
   end
 
   def likes
