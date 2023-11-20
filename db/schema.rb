@@ -74,15 +74,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_17_051522) do
   end
 
   create_table "relationships", charset: "utf8", force: :cascade do |t|
-    t.bigint "user_id"
     t.bigint "follower_id"
     t.bigint "followed_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["followed_id"], name: "index_relationships_on_followed_id"
+    t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
-    t.index ["user_id", "follower_id", "followed_id"], name: "index_relationships_on_user_id_and_follower_id_and_followed_id", unique: true
-    t.index ["user_id"], name: "index_relationships_on_user_id"
   end
 
   create_table "tags", charset: "utf8", force: :cascade do |t|
@@ -111,7 +109,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_17_051522) do
   add_foreign_key "post_tags", "posts"
   add_foreign_key "post_tags", "tags"
   add_foreign_key "posts", "users"
-  add_foreign_key "relationships", "users"
   add_foreign_key "relationships", "users", column: "followed_id"
   add_foreign_key "relationships", "users", column: "follower_id"
 end

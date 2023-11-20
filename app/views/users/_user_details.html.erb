@@ -1,0 +1,54 @@
+<!-- user/_user_details.html.erb -->
+<% @user.following.reverse.each do |followed_user| %>
+  <div id="user-<%= followed_user.id %>" class="user-details">
+    <div class="user-info">
+      <%= link_to followed_user.nickname, user_path(followed_user), class: "user-nickname" %>
+      <% if current_user == @user %>
+        <% if current_user.following?(followed_user) %>
+          <%= button_to 'フォロー中', unfollow_user_path(followed_user), method: :delete, remote: true, class: 'btn btn-light unfollow-btn', data: { turbo: :true, followed_user_id: followed_user.id }, id: "unfollow-btn-#{followed_user.id}" %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<style>
+  .user-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.5cm; 
+  }
+
+  .user-info {
+    display: flex;
+    align-items: center;
+  }
+
+  .user-nickname {
+    font-weight: bold;
+    color: grey;
+    margin-right: 0.5cm; 
+     font-size: 1.2em; /* ユーザーの名前を大きくする */
+  }
+</style>
+
+<%# <script>
+  document.addEventListener('turbo:load', () => {
+    const unfollowButtons = document.querySelectorAll('.unfollow-btn');
+    unfollowButtons.forEach(button => {
+      button.addEventListener('ajax:success', () => {
+        // フォロー解除成功時の処理
+        const userId = button.dataset.followedUserId;
+        const userDetailDiv = document.getElementById(`user-${userId}`);
+        if (userDetailDiv) {
+          userDetailDiv.remove(); // フォロー中ユーザーの情報を削除
+        }
+          });
+
+      button.addEventListener('ajax:error', () => {
+        alert('フォロー解除に失敗しました');
+      });
+    });
+  });
+</script> %>
