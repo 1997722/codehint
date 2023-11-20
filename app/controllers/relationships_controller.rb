@@ -17,6 +17,8 @@ class RelationshipsController < ApplicationController
             turbo_stream.remove("user-#{@user.id}") # フォロー一覧から該当ユーザー情報を削除するTurbo Stream コマンド
           ]
         end
+        format.html { redirect_to user_path(@user), notice: 'Some notice message' }
+    # その他のフォーマットに対するレスポンスも設定する
       end
   end
 

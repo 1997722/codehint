@@ -5,32 +5,47 @@
       <h1 class="text-center"><%= @user.nickname %>'s page✨</h1>
         <% if current_user != @user %>
           <% if current_user.following?(@user) %>
-            <%= form_with(url: unfollow_user_path(@user), method: :delete, class: 'unfollow-form', remote: true) do |form| %>
+            <%= form_with(url: unfollow_user_path(@user), method: :delete, class: 'unfollow-form', remote: true, data: { turbo: 'false' }) do |form| %>
               <%= form.button 'フォロー中', type: :submit, class: 'btn btn-light mt-3 unfollow-button', id: 'unfollow-btn' %>
             <% end %>
           <% else %>
-            <%= form_with(url: follow_user_path(@user), method: :post, class: 'follow-form', remote: true) do |form| %>
+            <%= form_with(url: follow_user_path(@user), method: :post, class: 'follow-form', remote: true, data: { turbo: 'false' }) do |form| %>
               <%= form.button 'フォローする', type: :submit, class: 'btn btn-primary mt-3 follow-button', id: 'follow-btn' %>
             <% end %>
           <% end %>
         <% end %>
-
         <script>
           document.addEventListener("turbo:submit-end", (event) => {
-            console.log("イベントリスナーが動作しています");
             const form = event.target;
 
-            if (form.method === "delete" && form.classList.contains('unfollow-form')) {
-              const unfollowButton = document.getElementById('unfollow-btn');
-              const followButton = document.getElementById('follow-btn');
-
-              if (unfollowButton && followButton) {
-                unfollowButton.classList.add('d-none'); // Bootstrapのd-noneクラスで非表示にする
-                followButton.classList.remove('d-none'); // Bootstrapのd-noneクラスを解除して表示する
-              }
+            if (form.classList.contains('unfollow-form')) {
+              window.location.reload();
             }
           });
         </script>
+        <%# <script>
+            document.addEventListener("turbo:submit-end", (event) => {
+              console.log("イベントリスナーが動作しています");
+
+              const form = event.target;
+              console.log(form);
+
+              if (form.classList.contains('unfollow-form')) {
+                const unfollowButton = form.querySelector('.unfollow-button');
+                const followButton = form.closest('.parent-element').querySelector('.follow-button'); 
+                console.log(unfollowButton);
+                console.log(followButton);
+                console.log("テスト");
+
+                if (unfollowButton && unfollowButton.style.display !== "none") {
+                  unfollowButton.style.display = "none";
+                  if (followButton) {
+                  followButton.style.display = "inline-block";
+                }
+              }
+            }
+          });
+        </script> %>
         <br>
       <ul class="nav nav-tabs justify-content-center fs-5">
         <li class="nav-item">
