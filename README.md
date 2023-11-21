@@ -1,4 +1,4 @@
-# Share🌐🤍
+# Share🌐
 ### ”Share”とは、コーディネート写真投稿アプリです👗
 コーディネートを”Share"して、コーディネートのお悩み解決をお手伝いします！
 ファッションも自分らしく自由な時代だからこそ、リアルなユーザーが発信するこのアプリを使えば、参考になるコーディネートがきっと見つかるはず✨
@@ -19,16 +19,16 @@
 ## ■機能一覧
 
 ### トップページ
-<a href="https://gyazo.com/74c7c2a2306e5d4350ebe808ad84cd4e"><img src="https://i.gyazo.com/74c7c2a2306e5d4350ebe808ad84cd4e.gif" alt="Image from Gyazo" width="990"/></a>
+![74c7c2a2306e5d4350ebe808ad84cd4e](https://github.com/1997722/codehint/assets/146316611/2e5ba901-5af7-4670-9b46-0aef83dfd1b6)
 
 ### ログイン、新規登録ページ
-<a href="https://gyazo.com/261c5b38ff8c4c544ebdd8a9372d478d"><img src="https://i.gyazo.com/261c5b38ff8c4c544ebdd8a9372d478d.gif" alt="Image from Gyazo" width="988"/></a>
+![261c5b38ff8c4c544ebdd8a9372d478d](https://github.com/1997722/codehint/assets/146316611/891b24c9-420a-43c4-abfd-b00c39f469de)
 
 ### 新規投稿ページ
-<a href="https://gyazo.com/16c24fae4556821e6277354c60c2ac33"><img src="https://i.gyazo.com/16c24fae4556821e6277354c60c2ac33.gif" alt="Image from Gyazo" width="984"/></a>
+![16c24fae4556821e6277354c60c2ac33](https://github.com/1997722/codehint/assets/146316611/0d82cbb7-ed53-45ea-89f6-d50451ac00ab)
 
 ### 投稿編集ページ
-<a href="https://gyazo.com/e3b8527d4b5a964b009752fc91f96487"><img src="https://i.gyazo.com/e3b8527d4b5a964b009752fc91f96487.gif" alt="Image from Gyazo" width="984"/></a>
+![e3b8527d4b5a964b009752fc91f96487 (1) (1)](https://github.com/1997722/codehint/assets/146316611/98d30c9e-b1d3-4d60-98ae-a43f38993b56)
 
 ### 検索結果一覧ページ
 [![Image from Gyazo](https://i.gyazo.com/2f749742feb1cbef057740aaf95452ed.gif)](https://gyazo.com/2f749742feb1cbef057740aaf95452ed)
@@ -42,10 +42,10 @@
 [![Image from Gyazo](https://i.gyazo.com/e66e12bdf14680eb0e5235911714c2fb.gif)](https://gyazo.com/e66e12bdf14680eb0e5235911714c2fb)
 
 ### 1番人気のタグの投稿一覧ページ
-<a href="https://gyazo.com/70facbe25da1797cb0adc3cdc3399400"><img src="https://i.gyazo.com/70facbe25da1797cb0adc3cdc3399400.gif" alt="Image from Gyazo" width="976"/></a>
+![70facbe25da1797cb0adc3cdc3399400](https://github.com/1997722/codehint/assets/146316611/25fdd6d3-983d-4118-bcd5-c73cd91ca966)
 
 ### アプリの説明ページ
-<a href="https://gyazo.com/8552fd210f396badfd928cb30263ced9"><img src="https://i.gyazo.com/8552fd210f396badfd928cb30263ced9.gif" alt="Image from Gyazo" width="972"/></a>
+![8552fd210f396badfd928cb30263ced9](https://github.com/1997722/codehint/assets/146316611/a0163d23-3c2d-4eee-a992-84eb34c46899)
 
 ## ■ER図
 [![Image from Gyazo](https://i.gyazo.com/6ddc52e55a3c44e9bda3e6fd9a88ad40.png)](https://gyazo.com/6ddc52e55a3c44e9bda3e6fd9a88ad40)
