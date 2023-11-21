@@ -1,12 +1,12 @@
-<div class="container">
-  <div class="row">
+<div class="container-fluid px-0">
+  <div class="row row-cols-2 row-cols-md-3 g-4">
     <% if @like_posts.present? %>
       <h1 class="text-center">List of liked posts 🤍</h1>
       <p class="text-center">いいねした投稿を一覧表示しています！</p>
       <br>
       <% @like_posts.each do |post| %>
-        <div class="col-md-4 mb-4">
-          <div class="card">
+        <div class="col mb-4">
+          <div class="card h-100">
           <!-- 投稿画像 -->
             <div class="aspect-ratio">
               <% if post.image.attached? %>

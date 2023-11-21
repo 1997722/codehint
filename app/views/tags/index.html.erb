@@ -1,13 +1,16 @@
-<div class="container">  
+<div class="container-fluid px-0">  
   <h1 class="text-center"> Most Popular Tags 🥇</h1>
   <p class="text-center mb-2 d-md-block">今、1番人気のタグをご紹介！！</p>
-
+  <br>
   <% most_used_tag = @tags.first %>
   <% if most_used_tag %>
-    <div class="row">
+  <div class="text-center">
+      <h4><i class="fas fa-tag"></i><%= most_used_tag.tag_name %></h4>
+    </div>
+    <div class="row row-cols-2 row-cols-md-3 g-4">
       <% most_used_tag.posts.each do |post| %>
-        <div class="col-md-4 mb-4">
-          <div class="card">
+        <div class="col mb-4">
+          <div class="card h-100">
             <!-- 投稿画像 -->
             <div class="aspect-ratio">
               <% if post.image.attached? %>

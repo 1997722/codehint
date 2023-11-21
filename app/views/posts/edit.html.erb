@@ -1,27 +1,31 @@
-<div class="container background-section2">
+<div class="container-fluid px-0 background-section2 ">
   <h1 class="text-center">Let's edit!</h1>
-    <div class="row">
-      <div class="col-10 offset-1 col-md-4 offset-md-4"> 
-        <%= form_with(model: @post, local: true) do |form| %>
-          <div class="form-group">
-            <%= form.text_area :content, class: "form-control posts-text", id: "post-info", placeholder: "コーディネートの説明を一言！", rows: "4", maxlength: "40" %>
-          </div>
-          <br>
-          <div class="form-group">
-            <%= form.text_field :tag_name, class: "form-control ", placeholder: "タグ" %>
-          </div>
-          <br>
-          <div class="form-group text-center">
-            <%= form.file_field :image, id: "post-image", class: "form-control-file" %>
-            <br>
-              <small class="text-muted">今の画像は、こちらです。↓</small>
-            <%= image_tag @post.image, class: 'img-thumbnail mx-auto d-block', size: '180x180' if @post.image.attached? %>
-            <br>
-          </div>
-          <div class="text-center">
-            <%= form.submit "変更する", class: "btn btn-primary post-btn" %>
-          </div>
-        <% end %>
-      </div>
+  <div class="row">
+    <div class="col-10 offset-1 col-md-4 offset-md-4"> 
+      <%= form_with(model: @post, local: true) do |form| %>
+        <div class="form-group">
+          <%= form.text_area :content, class: "form-control posts-text", id: "post-info", placeholder: "コーディネートの説明を一言！", rows: "4", maxlength: "40" %>
+        </div>
+        <br>
+        <div class="form-group">
+          <%= form.text_field :tag_name, class: "form-control", placeholder: "タグ" %>
+          <% # 既存のタグを表示するための処理 %>
+          <% @post.tags.each do |tag| %>
+            <span class="badge bg-secondary">
+              <i class="fas fa-tag"></i> <%= tag.tag_name %>
+            </span>
+          <% end %>
+        </div>
+        <br>
+        <div class="form-group text-center">
+          <small class="text-muted">↓ 投稿中の写真は、こちらです。</small>
+          <%= image_tag @post.image, class: 'img-thumbnail mx-auto d-block', size: '300x300' if @post.image.attached? %>
+        </div>
+        <br>
+        <div class="text-center">
+          <%= form.submit "変更する", class: "btn btn-primary post-btn" %>
+        </div>
+      <% end %>
     </div>
+  </div>
 </div>

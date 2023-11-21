@@ -118,7 +118,7 @@
 }
 
 .container {
-  padding-top: 30px; /* 上部の余白 */
+  padding-top: 40; /* 上部の余白 */
   padding-bottom: 10px; /* 下部の余白 */
   padding-left: 0; /* 左側の余白を無くす */
   padding-right: 0; /* 右側の余白を無くす */
