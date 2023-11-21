@@ -9,7 +9,7 @@ class PostsController < ApplicationController
 
     @post = current_user.posts.new if user_signed_in?
 
-    @posts = Post.includes(:user).order('created_at DESC').page(params[:page]).per(12)
+    @posts = Post.includes(:user).order('created_at DESC').page(params[:page]).per(9)
   end
 
   def new
@@ -77,7 +77,7 @@ class PostsController < ApplicationController
   private
   
   def post_params
-    params.require(:post).permit(:content, :image, :tag_name).merge(user_id: current_user.id)
+    params.require(:post).permit(:content, :image).merge(user_id: current_user.id)
   end
 
   def set_post
