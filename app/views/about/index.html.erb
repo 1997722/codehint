@@ -30,6 +30,11 @@ body {
 h3.text-center.underline {
   text-decoration: underline white;
 }
+
+.smaller-image {
+    max-width: 500px; /* 画像の最大幅 */
+    height: auto; /* 高さを自動調整 */
+}
 </style>
 
 <div class="container-fluid px-0">
@@ -45,8 +50,10 @@ h3.text-center.underline {
     <p class="text-center">参考になるコーディネートがきっと見つかるはず✨</p>
   </div>
   <div class="col-md-12 text-center">
-    <img src="<%= asset_path("about3.png") %>" class="d-block img-fluid" alt="Hero Image">
+    <img src="<%= asset_path("74c7c2a2306e5d4350ebe808ad84cd4e.gif") %>" class="smaller-image" alt="GIF Image">
   </div>
+<br>
+<br>
 <br>
   <div class="section">
     <h3 class="text-center underline">"Share"するのは、コーディネートだけじゃない！</h3>
@@ -54,7 +61,7 @@ h3.text-center.underline {
     <p class="text-center">素敵な一言と複数のタグ付けが可能！</p>
     <p class="text-center">コーディネートのポイントがいくつかあったら、</p>
     <p class="text-center">複数のタグを付けて世界中に”Share"しよう🌐</p>
-    <p class="text-center">詳細ページでは、コメントの投稿も出来ます！</p>
+    <p class="text-center">詳細ページでは、コメントの投稿もできます！</p>
   </div>
 <br>
   <div class="section">
@@ -67,13 +74,20 @@ h3.text-center.underline {
   </div>
 <br>
   <div class="section">
-    <h3 class="text-center underline">いいね🤍で”Share”を実用的に！</h3>
+    <h3 class="text-center underline">マイページで”Share”を実用的に！</h3>
     <br>
-    <p class="text-center">いいなと思った投稿は、後で見返せるように保存出来ます☺️</p>
-    <p class="text-center">投稿のハートボタンをクリックするだけ！</p>
-    <p class="text-center">Likedで一覧表示が出来るので、とても便利です🪄</p>
+    <p class="text-center">マイページでは、自分の投稿だけではなく</p>
+    <p class="text-center">いいねした投稿、フォローしたユーザーを一覧表示で確認できます🤍</p>
+    <p class="text-center">とても便利な機能なので、ぜひ活用してみてください🪄</p>
   </div>
 <br>
+<!-- Sign UpとLoginボタンのセクション -->
+  <div class="section text-center">
+    <div class="d-grid gap-2 col-md-4 mx-auto">
+      <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-outline-dark btn-lg me-md-2 mb-2 mb-md-0' %>
+      <%= link_to 'Login', new_user_session_path, class: 'btn btn-outline-secondary btn-lg' %>
+    </div>
+  </div>
 <br>
 <!-- 作成者のプロフィール -->
   <div class="section profile-section">
