@@ -45,7 +45,7 @@
 ![70facbe25da1797cb0adc3cdc3399400](https://github.com/1997722/codehint/assets/146316611/25fdd6d3-983d-4118-bcd5-c73cd91ca966)
 
 ### アプリの説明ページ
-![8552fd210f396badfd928cb30263ced9](https://github.com/1997722/codehint/assets/146316611/a0163d23-3c2d-4eee-a992-84eb34c46899)
+![ba43fe0775ede6a9651aea29b32ecfaf](https://github.com/1997722/codehint/assets/146316611/27085a70-f060-459f-b0e4-28b77b5da75b)
 
 ## ■ER図
 [![Image from Gyazo](https://i.gyazo.com/6ddc52e55a3c44e9bda3e6fd9a88ad40.png)](https://gyazo.com/6ddc52e55a3c44e9bda3e6fd9a88ad40)

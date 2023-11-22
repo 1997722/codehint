@@ -42,10 +42,13 @@ class PostsController < ApplicationController
   
     if params[:post][:content].present? || params[:post][:tag_name].present?
       if @post.update(content: params[:post][:content])
+
         if params[:post][:tag_name].present?
+          tag_list = params[:post][:tag_name].split(/\s+/) 
           @post.tags.destroy_all
           @post.save_tags(tag_list)
         end
+        
         flash[:notice] = '投稿を更新しました。'
         redirect_to root_path
       else

@@ -8,7 +8,7 @@
         </div>
         <br>
         <div class="form-group">
-          <%= text_field_tag 'post[tag_name]', @post.tags.pluck(:tag_name).join(' '), class: "form-control", placeholder: "タグ" %>
+          <%= form.text_field :tag_name, value: @post.tags.pluck(:tag_name).join(' '), class: "form-control", placeholder: "タグ" %>
           <% # 既存のタグを表示するための処理 %>
           <% @post.tags.each do |tag| %>
             <span class="badge bg-secondary">
