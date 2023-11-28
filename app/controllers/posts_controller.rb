@@ -75,6 +75,7 @@ class PostsController < ApplicationController
     @tag_name = params[:tag_name]
     @tag = Tag.find_by(tag_name: @tag_name)
     @posts = @tag.present? ? @tag.posts : []
+    @post = @posts.first
   end
 
   private

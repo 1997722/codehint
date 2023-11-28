@@ -23,29 +23,6 @@
             }
           });
         </script>
-        <%# <script>
-            document.addEventListener("turbo:submit-end", (event) => {
-              console.log("イベントリスナーが動作しています");
-
-              const form = event.target;
-              console.log(form);
-
-              if (form.classList.contains('unfollow-form')) {
-                const unfollowButton = form.querySelector('.unfollow-button');
-                const followButton = form.closest('.parent-element').querySelector('.follow-button'); 
-                console.log(unfollowButton);
-                console.log(followButton);
-                console.log("テスト");
-
-                if (unfollowButton && unfollowButton.style.display !== "none") {
-                  unfollowButton.style.display = "none";
-                  if (followButton) {
-                  followButton.style.display = "inline-block";
-                }
-              }
-            }
-          });
-        </script> %>
         <br>
       <ul class="nav nav-tabs justify-content-center fs-5">
         <li class="nav-item">
@@ -71,7 +48,7 @@
         <div class="tab-pane fade show active" id="d22">
           <h4 class="mt-3">List of posts by <%= @nickname %> 🖋 </h4>
           <br>
-          <% if @like_posts.any? %>
+          <% if @posts.any? %>
             <div class="row row-cols-2 row-cols-md-3 g-4">
               <% @posts.each do |post| %>
                 <div class="colmb-4">
@@ -99,8 +76,8 @@
                       <!-- 編集、削除ボタン (ログイン中の投稿者のみ表示) -->
                       <div class="text-center">
                         <% if user_signed_in? && current_user == post.user %>
-                          <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
+                          <div class="d-flex justify-content-center align-items-center">
+                            <div class="btn-group text-center">
                               <%= link_to '編集', edit_post_path(post), class: 'btn btn-sm btn-outline-secondary' %>
                               <%= link_to '削除', post_path(post.id), data: { turbo_method: :delete }, class: 'btn btn-sm btn-outline-secondary' %>
                             </div>
@@ -151,8 +128,8 @@
                         <!-- 編集、削除ボタン (ログイン中の投稿者のみ表示) -->
                         <div class="text-center">
                           <% if user_signed_in? && current_user == post.user %>
-                            <div class="d-flex justify-content-between align-items-center">
-                              <div class="btn-group">
+                            <div class="d-flex justify-content-center align-items-center">
+                              <div class="btn-group text-center">
                                 <%= link_to '編集', edit_post_path(post), class: 'btn btn-sm btn-outline-secondary' %>
                                 <%= link_to '削除', post_path(post), data: { turbo_method: :delete }, class: 'btn btn-sm btn-outline-secondary' %>
                               </div>
@@ -161,6 +138,15 @@
                             <!-- ボタンがない場合の空白を追加 -->
                             <div style="height: 32px;"></div>
                           <% end %>
+                        </div>
+                        <br>
+                        <div id="like-btn<%= post.id %>">
+                          <%= render partial: "likes/like", locals: { post: post } %>
+                        </div>
+                        <div class="text-end">
+                          <small class="text-muted">
+                            投稿者: <%= link_to post.user.nickname, user_path(post.user), style: 'color: gray;' %>さん
+                          </small>
                         </div>
                       </div>
                     </div>

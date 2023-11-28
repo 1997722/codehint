@@ -9,7 +9,7 @@
 #### https://share-fqyk.onrender.com
 
 ### テスト用アカウント
-#### EMAIL: test@1234.com
+#### EMAIL: test1234@1234.com
 
 #### PASSWORD: test1234
 

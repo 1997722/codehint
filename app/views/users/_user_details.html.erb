@@ -33,22 +33,4 @@
   }
 </style>
 
-<%# <script>
-  document.addEventListener('turbo:load', () => {
-    const unfollowButtons = document.querySelectorAll('.unfollow-btn');
-    unfollowButtons.forEach(button => {
-      button.addEventListener('ajax:success', () => {
-        // フォロー解除成功時の処理
-        const userId = button.dataset.followedUserId;
-        const userDetailDiv = document.getElementById(`user-${userId}`);
-        if (userDetailDiv) {
-          userDetailDiv.remove(); // フォロー中ユーザーの情報を削除
-        }
-          });
 
-      button.addEventListener('ajax:error', () => {
-        alert('フォロー解除に失敗しました');
-      });
-    });
-  });
-</script> %>

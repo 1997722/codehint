@@ -14,10 +14,12 @@
 
 .comment{
   display: flex;
+  justify-content: center;
 }
 
 .comment p{
-   margin: 0;
+  margin: 0;
+  text-align: center;
 }
 
 .user-info{
