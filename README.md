@@ -49,7 +49,8 @@
 ![ba43fe0775ede6a9651aea29b32ecfaf](https://github.com/1997722/codehint/assets/146316611/27085a70-f060-459f-b0e4-28b77b5da75b)
 
 ## ■ER図
-[![Image from Gyazo](https://i.gyazo.com/ad62ae5fa762b9b9401f0470be608753.png)](https://gyazo.com/ad62ae5fa762b9b9401f0470be608753)
+[![Image from Gyazo](https://i.gyazo.com/80bd4a24496de88081842f65396617f7.png)](https://gyazo.com/80bd4a24496de88081842f65396617f7)
+
 
 ## ■使用技術
 ### フロントエンド
