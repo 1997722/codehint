@@ -41,7 +41,6 @@
           </div>
           <br>
           <div id="comments" class="text-center">
-            <div id="comments">
               <h4>＜ List of comments ＞</h4>
                 <% @post.comments.each do |comment| %>
                   <div class="comment">
@@ -50,33 +49,21 @@
                   </div>
                 <% end %>
             </div>
+
             <div class="comment-form mt-4 d-flex justify-content-center">
               <% if user_signed_in? %>
-                <%= form_with model: [@post, @comment], id: "comment-form" do |f| %>
+                <%# コメントオブジェクトの新規作成 %>
+                <% comment = @post.comments.new %>
+                <%= form_with model: [@post, comment], id: "comment-form" do |f| %>
                   <div class="mb-3">
                   <%= f.text_area :content, class: "form-control comment-text", placeholder: "コメントを入力してね", id: "commentContent" %>
                   </div> 
                   <div class="text-center">
-                    <%= f.submit "コメントする", class: "comment-submit btn btn-secondary", onclick: "submitComment()" %>
+                    <%= f.submit "コメントする", class: "comment-submit btn btn-secondary" %>
                   </div>
                 <% end %>
               <% end %>
             </div>
-          </div>
-          <script>
-            function submitComment() {
-              // コメントの内容を取得
-              var commentContent = document.getElementById('commentContent').value;
-
-              // コメントが空であれば送信をキャンセル
-              if (commentContent.trim() === '') {
-                alert('コメント内容が空です。');
-              } else {
-                // コメントが空でなければフォームを送信
-                document.getElementById('comment-form').submit();
-              }
-            }
-          </script>
         </div>
       </div>
     </div>
