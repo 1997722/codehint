@@ -20,33 +20,31 @@
 ## ■機能一覧
 
 ### トップページ
-![74c7c2a2306e5d4350ebe808ad84cd4e](https://github.com/1997722/codehint/assets/146316611/2e5ba901-5af7-4670-9b46-0aef83dfd1b6)
+![ed07b4e73c0985b3944db718a904da4e (1)](https://github.com/1997722/codehint/assets/146316611/dfb976ab-6c51-49ab-8f4c-a1931202ba04)
 
 ### ログイン、新規登録ページ
 ![261c5b38ff8c4c544ebdd8a9372d478d](https://github.com/1997722/codehint/assets/146316611/891b24c9-420a-43c4-abfd-b00c39f469de)
 
 ### 新規投稿ページ
-![16c24fae4556821e6277354c60c2ac33](https://github.com/1997722/codehint/assets/146316611/0d82cbb7-ed53-45ea-89f6-d50451ac00ab)
+![98c71505002505480cef60fc6f5e645b](https://github.com/1997722/codehint/assets/146316611/4335b543-cc8b-4033-af58-669681ca5f4e)
 
 ### 投稿編集ページ
-![e3b8527d4b5a964b009752fc91f96487 (1) (1)](https://github.com/1997722/codehint/assets/146316611/98d30c9e-b1d3-4d60-98ae-a43f38993b56)
+![ea2d2a69be68c22a184af8fc7bd9aae1](https://github.com/1997722/codehint/assets/146316611/3801649d-a750-4724-b304-3cfbc8ef57d3)
 
 ### 検索結果一覧ページ
-[![Image from Gyazo](https://i.gyazo.com/2f749742feb1cbef057740aaf95452ed.gif)](https://gyazo.com/2f749742feb1cbef057740aaf95452ed)
+![d1587d514a81e5c5e0b72184fb7aa0a8](https://github.com/1997722/codehint/assets/146316611/d98b4788-f3da-4367-8e2d-791c0bbc38be)
 
 ### マイページ(自分の投稿一覧、いいねした投稿一覧、フォローしたユーザー一覧)
-[![Image from Gyazo](https://i.gyazo.com/4ebed5a056d232673fcd445c421e565e.gif)](https://gyazo.com/4ebed5a056d232673fcd445c421e565e)
-
-<a href="https://gyazo.com/9f056365c9a5cf6fb108716d81ebd5c8"><img src="https://i.gyazo.com/9f056365c9a5cf6fb108716d81ebd5c8.gif" alt="Image from Gyazo" width="986"/></a>
+![246f3a4358410c77fb935805f7b7053c](https://github.com/1997722/codehint/assets/146316611/4d5a3053-b391-4500-9196-fd1005d411aa)
 
 ### 投稿詳細ページ
-[![Image from Gyazo](https://i.gyazo.com/e66e12bdf14680eb0e5235911714c2fb.gif)](https://gyazo.com/e66e12bdf14680eb0e5235911714c2fb)
+![613cbfa3d945fffb8fcc2a18419c59dd](https://github.com/1997722/codehint/assets/146316611/85e6be3f-cd25-485d-b98c-45a65e6c6c09)
 
 ### 1番人気のタグの投稿一覧ページ
-![70facbe25da1797cb0adc3cdc3399400](https://github.com/1997722/codehint/assets/146316611/25fdd6d3-983d-4118-bcd5-c73cd91ca966)
+![32c2504217eaf08e8c275f4a3fd51e26](https://github.com/1997722/codehint/assets/146316611/81ce808d-c6d2-4b40-8548-fc3070487e02)
 
 ### アプリの説明ページ
-![ba43fe0775ede6a9651aea29b32ecfaf](https://github.com/1997722/codehint/assets/146316611/27085a70-f060-459f-b0e4-28b77b5da75b)
+![ba56fe92d5181f5b29023ba0c415ccbd](https://github.com/1997722/codehint/assets/146316611/13524a56-1ee7-43c6-bf4f-7df0d95ffbf0)
 
 ## ■ER図
 [![Image from Gyazo](https://i.gyazo.com/80bd4a24496de88081842f65396617f7.png)](https://gyazo.com/80bd4a24496de88081842f65396617f7)
