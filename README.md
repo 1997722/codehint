@@ -35,7 +35,9 @@
 ![d1587d514a81e5c5e0b72184fb7aa0a8](https://github.com/1997722/codehint/assets/146316611/d98b4788-f3da-4367-8e2d-791c0bbc38be)
 
 ### マイページ(自分の投稿一覧、いいねした投稿一覧、フォローしたユーザー一覧)
-![246f3a4358410c77fb935805f7b7053c](https://github.com/1997722/codehint/assets/146316611/4d5a3053-b391-4500-9196-fd1005d411aa)
+![525e668b11b4381fd154290a80750c43](https://github.com/1997722/codehint/assets/146316611/2372b3eb-7f9b-46f0-b8ab-7494cbd3218c)
+
+![58e651cacbadf7a548ea29e15cc2eadf](https://github.com/1997722/codehint/assets/146316611/7b761bec-495d-41b6-bfbc-ea2ead0ed136)
 
 ### 投稿詳細ページ
 ![613cbfa3d945fffb8fcc2a18419c59dd](https://github.com/1997722/codehint/assets/146316611/85e6be3f-cd25-485d-b98c-45a65e6c6c09)

@@ -4,8 +4,13 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @nickname = @user.nickname
-    # 自分の投稿だけを取得するための修正
-    @posts = @user.posts.or(Post.where(user_id: current_user.id)) # 自分の投稿 or 特定ユーザーの投稿
+    # ログインユーザーが選択したユーザーの投稿のみを取得する
+    if current_user == @user
+      @posts = @user.posts
+    else
+      @posts = @user.posts.where(user_id: @user.id)
+    end
+
     @like_posts = @user.likes.includes(:post)
   end
 
