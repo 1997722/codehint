@@ -30,19 +30,19 @@
               <% end %>
             </div>
             <div class="card-body">
-            <p class="card-text"><%= post.content %></p>
-            <p class="card-text">
-              <% post.tags.each do |tag| %>
-                <span class="badge bg-secondary">
-                  <i class="fas fa-tag"></i> <%= tag.tag_name %>
-                </span>
-              <% end %>
-            </p>
+              <p class="card-text text-center"><%= post.content %></p>
+              <p class="card-text text-center">
+                <% post.tags.each do |tag| %>
+                  <span class="badge bg-secondary">
+                    <i class="fas fa-tag"></i> <%= tag.tag_name %>
+                  </span>
+                <% end %>
+              </p>
               <!-- 編集、削除ボタン (ログイン中の投稿者のみ表示) -->
               <div class="text-center">
                 <% if user_signed_in? && current_user == post.user %>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
+                  <div class="d-flex justify-content-center align-items-center">
+                    <div class="btn-group text-center">
                       <%= link_to '編集', edit_post_path(post), class: 'btn btn-sm btn-outline-secondary' %>
                       <%= link_to '削除', post_path(post.id), data: { turbo_method: :delete }, class: 'btn btn-sm btn-outline-secondary' %>
                     </div>
@@ -53,9 +53,17 @@
                 <% end %>
               </div>
               <br>
-              <div id="like-btn<%= post.id %>">
-              <%= render partial: "likes/like", locals: { post: post } %>
-            </div>
+              <div class="text-center">
+                <div id="like-btn<%= post.id %>">
+                  <%= render partial: "likes/like", locals: { post: post } %>
+                </div>
+              </div>
+              <br>
+              <div class="text-end"> 
+                <small class="text-muted">
+                  投稿者: <%= link_to @post.user.nickname, user_path(@post.user), style: 'color: gray;' %>さん
+                </small>
+              </div>
             </div>
           </div>
         </div>
