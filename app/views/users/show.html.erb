@@ -50,7 +50,7 @@
           <br>
           <% if @posts.any? %>
             <div class="row row-cols-2 row-cols-md-3 g-4">
-              <% @posts.each do |post| %>
+              <% @posts.order(created_at: :desc).each do |post| %>
                 <div class="colmb-4">
                   <div class="card h-100">
                     <!-- 投稿画像 -->
@@ -102,7 +102,7 @@
           <br>
           <% if @like_posts.any? %>
             <div class="row row-cols-2 row-cols-md-3 g-4">
-              <% @like_posts.each do |like| %>
+              <% @like_posts.order(created_at: :desc).each do |like| %>
                 <% post = like.post %>
                 <% if post.present? && post.image.attached? %>
                   <div class="col mb-4">
