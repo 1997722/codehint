@@ -92,3 +92,4 @@ gem 'rest-client'
 gem 'bootstrap', '~> 5.1', '>= 5.1.3'
 gem 'stimulus-rails'
 gem 'importmap-rails'
+gem "aws-sdk-s3", require: false
