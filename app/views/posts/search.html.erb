@@ -1,21 +1,14 @@
 <div class="container-fluid px-0">
 <br>
 <br>
-  <div class="row">
-    <div class="col-md-12">
-      <% if @posts.empty? %>
-        <h1 class="text-centr">Search result 0</h1>
-      <% else %>
-        <h1 class="text-center">Search result list 🔍</h1>
-        <p class="text-center">検索した投稿を一覧表示しています！</p>
-      <% end %>
-    </div>
-  </div>
-  <div class="row row-cols-2 row-cols-md-3 g-4">
+<div class="row">
+  <div class="col-md-12">
     <% if @posts.empty? %>
-      <!-- キーワードが見つからなかった場合のメッセージ -->
+      <h1 class="text-center">Search result 0</h1>
       <p class="text-center">申し訳ありません、該当のキーワードが見つかりませんでした。</p>
     <% else %>
+      <h1 class="text-center">Search result list 🔍</h1>
+      <p class="text-center">検索した投稿を一覧表示しています！</p>
       <% @posts.each do |post| %>
         <!-- 投稿内容の表示 -->
         <div class="col mb-4">
