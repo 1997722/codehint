@@ -9,60 +9,62 @@
     <% else %>
       <h1 class="text-center">Search result list 🔍</h1>
       <p class="text-center">検索した投稿を一覧表示しています！</p>
-      <% @posts.each do |post| %>
-        <!-- 投稿内容の表示 -->
-        <div class="col mb-4">
-          <div class="card h-100">
-            <!-- 投稿画像 -->
-            <div class="aspect-ratio">
-              <% if post.image.attached? %>
-                <%= link_to post, class: 'aspect-ratio-item' do %>
-                  <%= image_tag post.image, class: 'card-img-top post-image' %>
-                  <div class="overlay">
-                    <span class="text"></span>
-                  </div>
-                <% end %>
-              <% end %>
-            </div>
-            <div class="card-body">
-              <p class="card-text text-center"><%= post.content %></p>
-              <p class="card-text text-center">
-                <% post.tags.each do |tag| %>
-                  <span class="badge bg-secondary">
-                    <i class="fas fa-tag"></i> <%= tag.tag_name %>
-                  </span>
-                <% end %>
-              </p>
-              <!-- 編集、削除ボタン (ログイン中の投稿者のみ表示) -->
-              <div class="text-center">
-                <% if user_signed_in? && current_user == post.user %>
-                  <div class="d-flex justify-content-center align-items-center">
-                    <div class="btn-group text-center">
-                      <%= link_to '編集', edit_post_path(post), class: 'btn btn-sm btn-outline-secondary' %>
-                      <%= link_to '削除', post_path(post.id), data: { turbo_method: :delete }, class: 'btn btn-sm btn-outline-secondary' %>
+      <div class="row row-cols-2 row-cols-md-3 g-4">
+        <% @posts.each do |post| %>
+          <!-- 投稿内容の表示 -->
+          <div class="col mb-4">
+            <div class="card h-100">
+              <!-- 投稿画像 -->
+              <div class="aspect-ratio">
+                <% if post.image.attached? %>
+                  <%= link_to post, class: 'aspect-ratio-item' do %>
+                    <%= image_tag post.image, class: 'card-img-top post-image' %>
+                    <div class="overlay">
+                      <span class="text"></span>
                     </div>
-                  </div>
-                <% else %>
-                <!-- ボタンがない場合の空白を追加 -->
-                  <div style="height: 32px;"></div>
+                  <% end %>
                 <% end %>
               </div>
-              <br>
-              <div class="text-center">
-                <div id="like-btn<%= post.id %>">
-                  <%= render partial: "likes/like", locals: { post: post } %>
+              <div class="card-body">
+                <p class="card-text text-center"><%= post.content %></p>
+                <p class="card-text text-center">
+                  <% post.tags.each do |tag| %>
+                    <span class="badge bg-secondary">
+                      <i class="fas fa-tag"></i> <%= tag.tag_name %>
+                    </span>
+                  <% end %>
+                </p>
+                <!-- 編集、削除ボタン (ログイン中の投稿者のみ表示) -->
+                <div class="text-center">
+                  <% if user_signed_in? && current_user == post.user %>
+                    <div class="d-flex justify-content-center align-items-center">
+                      <div class="btn-group text-center">
+                        <%= link_to '編集', edit_post_path(post), class: 'btn btn-sm btn-outline-secondary' %>
+                        <%= link_to '削除', post_path(post.id), data: { turbo_method: :delete }, class: 'btn btn-sm btn-outline-secondary' %>
+                      </div>
+                    </div>
+                  <% else %>
+                  <!-- ボタンがない場合の空白を追加 -->
+                    <div style="height: 32px;"></div>
+                  <% end %>
                 </div>
-              </div>
-              <br>
-              <div class="text-end"> 
-                <small class="text-muted">
-                  投稿者: <%= link_to @post.user.nickname, user_path(@post.user), style: 'color: gray;' %>さん
-                </small>
+                <br>
+                <div class="text-center">
+                  <div id="like-btn<%= post.id %>">
+                    <%= render partial: "likes/like", locals: { post: post } %>
+                  </div>
+                </div>
+                <br>
+                <div class="text-end"> 
+                  <small class="text-muted">
+                    投稿者: <%= link_to @post.user.nickname, user_path(@post.user), style: 'color: gray;' %>さん
+                  </small>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     <% end %>
   </div>
 </div>
